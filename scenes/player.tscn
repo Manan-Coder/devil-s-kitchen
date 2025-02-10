@@ -423,3 +423,12 @@ position = Vector2(45, 2)
 sprite_frames = SubResource("SpriteFrames_cygnl")
 animation = &"side-walk"
 frame_progress = 0.977513
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 4
+limit_top = 0
+limit_right = 911
+limit_bottom = 335
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

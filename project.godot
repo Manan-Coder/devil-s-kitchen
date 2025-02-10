@@ -17,10 +17,7 @@ config/icon="res://art/icon.svg"
 [autoload]
 
 Global="*res://script/global.gd"
-
-[display]
-
-window/stretch/scale=3.0
+SceneManager="*res://scene_manager.gd"
 
 [editor_plugins]
 
