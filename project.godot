@@ -12,8 +12,20 @@ config_version=5
 
 config/name="Devil's Kitchen"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://art/icon.svg"
+
+[autoload]
+
+Global="*res://script/global.gd"
+
+[display]
+
+window/stretch/scale=3.0
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
