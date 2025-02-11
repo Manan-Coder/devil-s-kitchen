@@ -1,7 +1,10 @@
-[gd_scene load_steps=56 format=3 uid="uid://v06enkhom816"]
+[gd_scene load_steps=57 format=3 uid="uid://v06enkhom816"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_0hu08"]
 [ext_resource type="Texture2D" uid="uid://brv2yvpqs2wh0" path="res://art/characters/player.png" id="2_ujfon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa32q"]
+size = Vector2(0.507526, 1.19695)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tu58h"]
 atlas = ExtResource("2_ujfon")
@@ -419,7 +422,9 @@ animations = [{
 script = ExtResource("1_0hu08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(42, 15.5)
 scale = Vector2(27.5848, 17.5446)
+shape = SubResource("RectangleShape2D_pa32q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(41.8303, 9.59161)

@@ -344,4 +344,9 @@ position = Vector2(121, 99)
 limit_right = 1102
 limit_bottom = 400
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1, -4, -1, 177, -1, 302, 0, 304, 1104, 304, 1104, 109, 1171, 101, 1173, 32, 1134, 13, 1105, 3, 1104, 3, 1104, -96, 0, -96, 0, -12, -5, -5, -119, 26, -188, -134, -25, -251, 20, -257, 199, -286, 789, -305, 1489, -217, 1502, -217, 1550, -43, 1518, 101, 1451, 221, 1323, 328, 1035, 371, 928, 392, 613, 435, 122, 395, -103, 376, -161, 93, -3, -5)
+
 [editable path="player"]

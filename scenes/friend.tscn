@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bmd4y7jd5xptw"]
+[gd_scene load_steps=38 format=3 uid="uid://bmd4y7jd5xptw"]
 
 [ext_resource type="Script" path="res://script/friend.gd" id="1_pjaat"]
 [ext_resource type="Texture2D" uid="uid://pi5n1bwm4obo" path="res://art/characters/hero1.png" id="1_w3grx"]
@@ -282,6 +282,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrhhn"]
+size = Vector2(10.4348, 16.5217)
+
 [node name="friend" type="CharacterBody2D"]
 scale = Vector2(1.15, 1.15)
 script = ExtResource("1_pjaat")
@@ -291,3 +294,7 @@ script = ExtResource("1_pjaat")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8lhvy")
 animation = &"back-walk"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.869565, 0.434782)
+shape = SubResource("RectangleShape2D_nrhhn")
