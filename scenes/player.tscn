@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://v06enkhom816"]
+[gd_scene load_steps=56 format=3 uid="uid://v06enkhom816"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_0hu08"]
 [ext_resource type="Texture2D" uid="uid://brv2yvpqs2wh0" path="res://art/characters/player.png" id="2_ujfon"]
@@ -413,6 +413,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_y07xy"]
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_0hu08")
 
@@ -435,3 +437,4 @@ limit_right = 911
 limit_bottom = 335
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = SubResource("GDScript_y07xy")

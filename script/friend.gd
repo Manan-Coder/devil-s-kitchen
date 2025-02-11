@@ -2,17 +2,10 @@ extends CharacterBody2D
 
 const speed = 100
 var current_dir = "none"
-@onready var camera = $Camera2D
+
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
-	var scene_name = get_tree().current_scene.name  # Get current scene name
-	var limits = SceneManager.get_camera_limits(scene_name)
 
-	if limits:
-		camera.limit_left = limits["left"]
-		camera.limit_right = limits["right"]
-		camera.limit_top = limits["top"]
-		camera.limit_bottom = limits["bottom"]
 func _physics_process(delta):
 	player_movement(delta)
 
