@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=4 uid="uid://dtc1gujj2r027"]
+[gd_scene load_steps=18 format=4 uid="uid://dtc1gujj2r027"]
 
+[ext_resource type="Script" path="res://scenes/home.gd" id="1_lon5y"]
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_tehll"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_w5fiv"]
 [ext_resource type="Texture2D" uid="uid://hf6rs6bget6g" path="res://art/tilesets/fences.png" id="3_c7d2e"]
@@ -104,6 +105,7 @@ sources/3 = SubResource("TileSetAtlasSource_df8tw")
 sources/4 = SubResource("TileSetAtlasSource_72kwo")
 
 [node name="home" type="Node2D"]
+script = ExtResource("1_lon5y")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_rm7s4")
@@ -120,7 +122,7 @@ tile_map_data = PackedByteArray("AAAHAAYABgABAAEAAAADAAoAAgAAAAMAAAADAAkAAgAAAAA
 tile_set = SubResource("TileSet_rm7s4")
 
 [node name="player" parent="." instance=ExtResource("6_k75yu")]
-position = Vector2(75, 149)
+position = Vector2(75, 166)
 
 [node name="walls" type="StaticBody2D" parent="."]
 

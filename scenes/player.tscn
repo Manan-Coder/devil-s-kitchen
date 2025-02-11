@@ -417,14 +417,17 @@ animations = [{
 script = ExtResource("1_0hu08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(27.5848, 17.5446)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(45, 2)
+position = Vector2(41.8303, 9.59161)
+scale = Vector2(0.907893, 0.822227)
 sprite_frames = SubResource("SpriteFrames_cygnl")
 animation = &"side-walk"
 frame_progress = 0.977513
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(36.466, -114.295)
 zoom = Vector2(3, 3)
 limit_left = 4
 limit_top = 0
