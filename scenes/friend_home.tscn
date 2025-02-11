@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dwd4e8cluyru3"]
+[gd_scene load_steps=20 format=4 uid="uid://dwd4e8cluyru3"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_b6uu6"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_vnyhm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://be4veqj6t8wd1" path="res://art/objects/Tiles.png" id="7_hj2y2"]
 [ext_resource type="PackedScene" uid="uid://bmd4y7jd5xptw" path="res://scenes/friend.tscn" id="7_v1c45"]
 [ext_resource type="Texture2D" uid="uid://c3owt4vik4xes" path="res://art/tilesets/32x32 first tileset.png" id="8_v54du"]
+[ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="10_466t4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whvhp"]
 texture = ExtResource("1_b6uu6")
@@ -991,7 +992,6 @@ sources/6 = SubResource("TileSetAtlasSource_u18io")
 sources/7 = SubResource("TileSetAtlasSource_uwk3p")
 
 [node name="friend-scene" type="Node2D"]
-scale = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4jh7i")
@@ -1009,3 +1009,16 @@ tile_set = SubResource("TileSet_4jh7i")
 
 [node name="friend" parent="." instance=ExtResource("7_v1c45")]
 position = Vector2(442, 115)
+
+[node name="player" parent="." instance=ExtResource("10_466t4")]
+position = Vector2(70, 87)
+
+[node name="AnimatedSprite2D" parent="player" index="1"]
+position = Vector2(-54, -16)
+
+[node name="Camera2D" parent="player" index="2"]
+position = Vector2(-149, -88)
+limit_right = 928
+limit_bottom = 336
+
+[editable path="player"]
