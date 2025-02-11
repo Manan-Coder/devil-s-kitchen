@@ -991,6 +991,7 @@ sources/6 = SubResource("TileSetAtlasSource_u18io")
 sources/7 = SubResource("TileSetAtlasSource_uwk3p")
 
 [node name="friend-scene" type="Node2D"]
+scale = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4jh7i")
