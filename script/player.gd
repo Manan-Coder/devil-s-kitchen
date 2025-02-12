@@ -1,7 +1,8 @@
 extends CharacterBody2D
-
+class_name player
 const speed = 100
 var current_dir: String = "none"
+
 
 func _ready():
 	$AnimatedSprite2D.play("front-idle")

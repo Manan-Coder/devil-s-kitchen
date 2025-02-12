@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://dtc1gujj2r027"]
+[gd_scene load_steps=19 format=4 uid="uid://dtc1gujj2r027"]
 
+[ext_resource type="Script" path="res://script/home.gd" id="1_htopq"]
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_tehll"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_w5fiv"]
 [ext_resource type="Texture2D" uid="uid://hf6rs6bget6g" path="res://art/tilesets/fences.png" id="3_c7d2e"]
@@ -8,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bujfxmynfutxb" path="res://art/characters/cow.png" id="5_h6orn"]
 [ext_resource type="Texture2D" uid="uid://d0xmbjgusqvwg" path="res://art/tilesets/floors/wooden.png" id="5_y1sb2"]
 [ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="6_k75yu"]
-
-[sub_resource type="GDScript" id="GDScript_hjdau"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2i858"]
 texture = ExtResource("1_tehll")
@@ -105,28 +104,12 @@ sources/7 = SubResource("TileSetAtlasSource_fsgqd")
 sources/3 = SubResource("TileSetAtlasSource_df8tw")
 sources/4 = SubResource("TileSetAtlasSource_72kwo")
 
-[sub_resource type="GDScript" id="GDScript_ba8lw"]
-script/source = "extends Area2D
-
-@export var target_scene: String = \"res://scenes/way1.tscn\"  # Change this to your scene path
-
-func _ready():
-	connect(\"body_entered\", _on_body_entered)
-
-func _on_body_entered(body):
-	if body.is_in_group(\"player\"):  # Make sure the player is in the 'player' group
-		print(\"✅ Player touched StaticBody2D, changing scene...\")
-		var error = get_tree().change_scene_to_file(target_scene)
-
-		if error != OK:
-			print(\"❌ Scene change failed! Error Code:\", error)
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nh2i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erq56"]
 size = Vector2(56, 71)
 
 [node name="home" type="Node2D"]
-script = SubResource("GDScript_hjdau")
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_htopq")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_rm7s4")
@@ -151,11 +134,13 @@ collision_layer = 16
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundary"]
 polygon = PackedVector2Array(0, 0, 912, 0, 912, 197, 968, 197, 968, 268, 912, 268, 912, 336, 0, 336, 0, 1, -6, 3, -115, 278, -55, 386, 279, 420, 611, 415, 970, 387, 1056, 211, 928, -96, 53, -73, -3, 1)
 
-[node name="portal" type="Area2D" parent="." groups=["player"]]
-position = Vector2(938, 228)
-script = SubResource("GDScript_ba8lw")
+[node name="portal" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
-light_mask = 2
-position = Vector2(2, 4)
-shape = SubResource("RectangleShape2D_0nh2i")
+position = Vector2(940, 232.5)
+shape = SubResource("RectangleShape2D_erq56")
+debug_color = Color(0.999208, 0, 0.120354, 0.42)
+
+[connection signal="body_entered" from="portal" to="." method="_on_portal_body_entered"]
+[connection signal="body_exited" from="portal" to="." method="_on_portal_body_exited"]
