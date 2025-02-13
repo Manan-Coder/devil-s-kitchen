@@ -1,5 +1,5 @@
 extends CharacterBody2D 
-class_name friend
+class_name friends
 const speed = 100
 var current_dir = "none"
 #

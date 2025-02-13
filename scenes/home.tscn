@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dtc1gujj2r027"]
+[gd_scene load_steps=20 format=4 uid="uid://dtc1gujj2r027"]
 
 [ext_resource type="Script" path="res://script/home.gd" id="1_htopq"]
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_tehll"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bujfxmynfutxb" path="res://art/characters/cow.png" id="5_h6orn"]
 [ext_resource type="Texture2D" uid="uid://d0xmbjgusqvwg" path="res://art/tilesets/floors/wooden.png" id="5_y1sb2"]
 [ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="6_k75yu"]
+[ext_resource type="Script" path="res://script/portal.gd" id="10_hmw5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2i858"]
 texture = ExtResource("1_tehll")
@@ -151,6 +152,7 @@ collision_layer = 16
 polygon = PackedVector2Array(0, 0, 912, 0, 912, 197, 968, 197, 968, 268, 912, 268, 912, 336, 0, 336, 0, 1, -6, 3, -115, 278, -55, 386, 279, 420, 611, 415, 970, 387, 1056, 211, 928, -96, 53, -73, -3, 1)
 
 [node name="portal" type="Area2D" parent="."]
+script = ExtResource("10_hmw5a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
 position = Vector2(940, 232.5)
