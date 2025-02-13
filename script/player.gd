@@ -6,6 +6,10 @@ var current_dir: String = "none"
 
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
+	print("Player ready!")
+	# Print collision info
+	print("Player collision layer:", collision_layer)
+	print("Player collision mask:", collision_mask)
 
 func _physics_process(delta):
 	player_movement(delta)
