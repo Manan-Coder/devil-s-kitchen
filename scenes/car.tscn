@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://p4n4dl422vcc"]
+
+[ext_resource type="Texture2D" uid="uid://cxrc7kdxb7rxk" path="res://art/objects/car.png" id="1_cqpnl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l11bb"]
+atlas = ExtResource("1_cqpnl")
+region = Rect2(0, 0, 104, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol3je"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l11bb")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"get",
+"speed": 1.0
+}]
+
+[node name="car" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ol3je")
+animation = &"get"
+frame = 1
+frame_progress = 0.278821
