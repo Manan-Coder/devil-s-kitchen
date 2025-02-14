@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dwd4e8cluyru3"]
+[gd_scene load_steps=22 format=4 uid="uid://dwd4e8cluyru3"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_b6uu6"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_vnyhm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bmd4y7jd5xptw" path="res://scenes/friend.tscn" id="7_v1c45"]
 [ext_resource type="Texture2D" uid="uid://c3owt4vik4xes" path="res://art/tilesets/32x32 first tileset.png" id="8_v54du"]
 [ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="10_466t4"]
+[ext_resource type="Script" path="res://script/portal_garage.gd" id="11_jtnno"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whvhp"]
 texture = ExtResource("1_b6uu6")
@@ -1008,6 +1009,9 @@ sources/5 = SubResource("TileSetAtlasSource_5koms")
 sources/6 = SubResource("TileSetAtlasSource_u18io")
 sources/7 = SubResource("TileSetAtlasSource_uwk3p")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waedu"]
+size = Vector2(56, 70)
+
 [node name="friend-scene" type="Node2D"]
 y_sort_enabled = true
 
@@ -1035,7 +1039,7 @@ position = Vector2(442, 115)
 
 [node name="player" parent="." instance=ExtResource("10_466t4")]
 y_sort_enabled = true
-position = Vector2(70, 87)
+position = Vector2(72, 86)
 
 [node name="CollisionShape2D" parent="player" index="0"]
 position = Vector2(-53, -10)
@@ -1044,7 +1048,7 @@ position = Vector2(-53, -10)
 position = Vector2(-54, -16)
 
 [node name="Camera2D" parent="player" index="2"]
-position = Vector2(-149, -88)
+position = Vector2(50, -48)
 limit_right = 928
 limit_bottom = 336
 
@@ -1054,7 +1058,10 @@ limit_bottom = 336
 polygon = PackedVector2Array(0, -1, 0, 0, 928, 0, 928, 178, 928, 181, 947, 182, 985, 182, 984, 225, 983, 250, 962, 250, 928, 252, 928, 336, 0, 336, 0, 1, -0.3625, 1.18125, -4, 3, -129, 186, -210, 422, 63, 523, 275, 560, 759, 566, 944, 556, 1270, 462, 1026, 48, 328, -483, 36, -298, 32, -160, -1, -1, -2, 0, -2, 1, -1, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("11_jtnno")
 
 [node name="portal_garage" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(956, 216)
+shape = SubResource("RectangleShape2D_waedu")
 
 [editable path="player"]

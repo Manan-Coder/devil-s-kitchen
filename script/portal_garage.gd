@@ -1,11 +1,20 @@
-extends CollisionShape2D
+extends Area2D
 
+func _ready():
+	print("Area2D is ready!")
+	monitoring = true
+	monitorable = true
+	print("Monitoring state:", monitoring)
+	
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_body_entered(body):
+	print("Body entered: ", body.name)
+	if body is player:
+		print("Player detected!")
+		get_tree().change_scene_to_file("res://scenes/garage-out.tscn")
+		
+func _on_body_exited(body):
+	print("Body exited: ", body.name)
