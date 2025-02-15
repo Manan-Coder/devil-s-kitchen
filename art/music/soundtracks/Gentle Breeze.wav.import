@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b88ba46syv8lo"
+path="res://.godot/imported/Gentle Breeze.wav-16ba66f839f828ef7f3dcf63e76b5c3e.sample"
+
+[deps]
+
+source_file="res://art/music/soundtracks/Gentle Breeze.wav"
+dest_files=["res://.godot/imported/Gentle Breeze.wav-16ba66f839f828ef7f3dcf63e76b5c3e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

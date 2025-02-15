@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cng1xtgmrmhtp"]
+[gd_scene load_steps=20 format=4 uid="uid://cng1xtgmrmhtp"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_dik03"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_18x3r"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hf6rs6bget6g" path="res://art/tilesets/fences.png" id="6_uvwoa"]
 [ext_resource type="Texture2D" uid="uid://d0orl6fnjnah5" path="res://art/objects/objects.png" id="7_wletm"]
 [ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="8_7yn5l"]
+[ext_resource type="PackedScene" uid="uid://bmd4y7jd5xptw" path="res://scenes/friend.tscn" id="10_nlgtg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43rvu"]
 texture = ExtResource("1_dik03")
@@ -1146,5 +1147,8 @@ position = Vector2(1866, 259)
 scale = Vector2(0.5, 0.5)
 frame = 0
 frame_progress = 0.277608
+
+[node name="friend" parent="." instance=ExtResource("10_nlgtg")]
+position = Vector2(24, 164)
 
 [editable path="player"]

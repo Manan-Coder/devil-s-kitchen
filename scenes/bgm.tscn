@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0hanknq6p4w4"]
+
+[ext_resource type="Script" path="res://script/bgm.gd" id="1_2tsyn"]
+
+[sub_resource type="AudioStream" id="AudioStream_4eaql"]
+
+[node name="bgm" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStream_4eaql")
+autoplay = true
+script = ExtResource("1_2tsyn")

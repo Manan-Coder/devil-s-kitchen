@@ -144,7 +144,6 @@ tile_set = SubResource("TileSet_rm7s4")
 
 [node name="player" parent="." instance=ExtResource("6_k75yu")]
 position = Vector2(79, 160)
-collision_layer = 16
 
 [node name="boundary" type="StaticBody2D" parent="."]
 
@@ -152,7 +151,7 @@ collision_layer = 16
 polygon = PackedVector2Array(0, 0, 912, 0, 912, 197, 968, 196.992, 968, 268, 912, 268, 912, 336, 0, 336, 0, 1, -6, 3, -115, 278, -55, 386, 279, 420, 611, 415, 970, 387, 1056, 211, 928, -96, 53, -73, -3, 1)
 
 [node name="portal" type="Area2D" parent="."]
-collision_mask = 16
+collision_mask = 2
 script = ExtResource("10_hmw5a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]

@@ -4,7 +4,6 @@ func _on_portal_body_entered(body):
 	if body is player:
 		print(body)
 		
-	
 
 func _process(delta: float):
 	change_scenes()

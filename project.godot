@@ -18,6 +18,7 @@ config/icon="res://art/icon.svg"
 [autoload]
 
 global="*res://script/global.gd"
+Bgm="*res://scenes/bgm.tscn"
 
 [editor_plugins]
 

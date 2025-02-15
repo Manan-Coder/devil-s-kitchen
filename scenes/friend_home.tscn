@@ -1058,6 +1058,7 @@ limit_bottom = 336
 polygon = PackedVector2Array(0, -1, 0, 0, 928, 0, 928, 178, 928, 181, 947, 182, 985, 182, 984, 225, 983, 250, 962, 250, 928, 252, 928, 336, 0, 336, 0, 1, -0.3625, 1.18125, -4, 3, -129, 186, -210, 422, 63, 523, 275, 560, 759, 566, 944, 556, 1270, 462, 1026, 48, 328, -483, 36, -298, 32, -160, -1, -1, -2, 0, -2, 1, -1, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 script = ExtResource("11_jtnno")
 
 [node name="portal_garage" type="CollisionShape2D" parent="Area2D"]

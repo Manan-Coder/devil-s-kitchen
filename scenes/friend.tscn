@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://bmd4y7jd5xptw"]
+[gd_scene load_steps=40 format=3 uid="uid://bmd4y7jd5xptw"]
 
 [ext_resource type="Script" path="res://script/friend.gd" id="1_pjaat"]
 [ext_resource type="Texture2D" uid="uid://pi5n1bwm4obo" path="res://art/characters/hero1.png" id="1_w3grx"]
+[ext_resource type="Script" path="res://script/friend-detection.gd" id="3_m2ivy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1kao"]
 atlas = ExtResource("1_w3grx")
@@ -285,16 +286,30 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrhhn"]
 size = Vector2(10.4348, 16.5217)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_50fx7"]
+radius = 78.2609
+
 [node name="friend" type="CharacterBody2D"]
 scale = Vector2(1.15, 1.15)
+collision_layer = 2
 script = ExtResource("1_pjaat")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8lhvy")
 animation = &"back-walk"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.869565, 0.434782)
 shape = SubResource("RectangleShape2D_nrhhn")
+
+[node name="detection" type="Area2D" parent="."]
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("3_m2ivy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource("CircleShape2D_50fx7")
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
