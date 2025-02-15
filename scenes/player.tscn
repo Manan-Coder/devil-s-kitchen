@@ -1,7 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://v06enkhom816"]
+[gd_scene load_steps=58 format=3 uid="uid://v06enkhom816"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_0hu08"]
 [ext_resource type="Texture2D" uid="uid://brv2yvpqs2wh0" path="res://art/characters/player.png" id="2_ujfon"]
+[ext_resource type="AudioStream" uid="uid://bpe4o4hyx6aqr" path="res://art/music/sound-effects/walk-gravel.wav" id="3_8nu1m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hixyp"]
 radius = 0.217511
@@ -445,3 +446,6 @@ limit_bottom = 335
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = SubResource("GDScript_y07xy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8nu1m")

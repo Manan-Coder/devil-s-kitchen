@@ -2,12 +2,12 @@ extends CharacterBody2D
 class_name player
 const speed = 100
 var current_dir: String = "none"
-
+@onready var walk_gravel = $AudioStreamPlayer2D
 
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
 	print("Player ready!")
-	# Print collision info
+
 	print("Player collision layer:", collision_layer)
 	print("Player collision mask:", collision_mask)
 
@@ -46,27 +46,21 @@ func player_movement(delta):
 func play_anim(movement):
 	var anim = $AnimatedSprite2D
 	
+	if movement == 1:
+		if not walk_gravel.playing:  
+			walk_gravel.play()
+	else:
+		walk_gravel.stop() 
+	
 	if current_dir == "right":
 		anim.flip_h = false
-		if movement == 1:
-			anim.play("side-walk")
-		elif movement == 0:
-			anim.play("side-idle")
+		anim.play("side-walk" if movement == 1 else "side-idle")
 	elif current_dir == "left":
 		anim.flip_h = true
-		if movement == 1:
-			anim.play("side-walk")
-		elif movement == 0:
-			anim.play("side-idle")
+		anim.play("side-walk" if movement == 1 else "side-idle")
 	elif current_dir == "down":
 		anim.flip_h = false
-		if movement == 1:
-			anim.play("front-walk")
-		elif movement == 0:
-			anim.play("front-idle")
+		anim.play("front-walk" if movement == 1 else "front-idle")
 	elif current_dir == "up":
 		anim.flip_h = true
-		if movement == 1:
-			anim.play("back-walk")
-		elif movement == 0:
-			anim.play("back-idle")
+		anim.play("back-walk" if movement == 1 else "back-idle")
