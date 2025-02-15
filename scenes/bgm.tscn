@@ -6,5 +6,6 @@
 
 [node name="bgm" type="AudioStreamPlayer2D"]
 stream = SubResource("AudioStream_4eaql")
+volume_db = -0.991
 autoplay = true
 script = ExtResource("1_2tsyn")

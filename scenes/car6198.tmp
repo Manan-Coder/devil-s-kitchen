@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://p4n4dl422vcc"]
+[gd_scene load_steps=5 format=3 uid="uid://p4n4dl422vcc"]
 
 [ext_resource type="Texture2D" uid="uid://cxrc7kdxb7rxk" path="res://art/objects/car.png" id="1_cqpnl"]
-[ext_resource type="Script" path="res://script/car.gd" id="2_sf7mc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ewhbu"]
 atlas = ExtResource("1_cqpnl")
@@ -23,7 +22,6 @@ size = Vector2(81, 54)
 
 [node name="car" type="CharacterBody2D"]
 position = Vector2(303, 140)
-script = ExtResource("2_sf7mc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(17, 0)
