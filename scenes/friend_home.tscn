@@ -1,6 +1,8 @@
-[gd_scene load_steps=25 format=4 uid="uid://dwd4e8cluyru3"]
+[gd_scene load_steps=27 format=4 uid="uid://dwd4e8cluyru3"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_b6uu6"]
+[ext_resource type="Texture2D" uid="uid://c8mtmr6skblmh" path="res://art/cutscenes/player-cuts.png" id="1_q40wf"]
+[ext_resource type="Texture2D" uid="uid://b1arou7t1ryfd" path="res://art/cutscenes/friend-cuts.png" id="2_tgbi6"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_vnyhm"]
 [ext_resource type="Texture2D" uid="uid://d0xmbjgusqvwg" path="res://art/tilesets/floors/wooden.png" id="3_c152v"]
 [ext_resource type="Texture2D" uid="uid://bmukatvgfkmjy" path="res://art/objects/House.png" id="4_e6l0i"]
@@ -1014,7 +1016,7 @@ size = Vector2(56, 70)
 
 [sub_resource type="Animation" id="Animation_lxbq5"]
 resource_name = "1st"
-length = 20.0
+length = 100.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1022,10 +1024,10 @@ tracks/0/path = NodePath("UI/Panel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.03333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.03333, 54.0667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1034,10 +1036,34 @@ tracks/1/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.13333, 1.2, 1.66667, 2.03333, 2.36667, 2.86667, 3.33333, 4.73333, 8.03333, 8.53333, 10.4333, 12.9, 13.4333, 14.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.1, 2.8, 3.3, 3.8, 4.43333, 4.9, 6.4, 7.53333, 8.53333, 10.4, 13, 13.7333, 15.2333, 17.5, 19.4333, 25.6455, 27.0667, 29.0667, 33.7667, 35.6, 39.7, 41.7, 42.9667, 48.2333, 50.3333, 52.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["~`~``~~~`~", "", "`~~`", "`~~```", "`~~```~~", "`~~```~~`~", "`~~```~~`~`~", "`~~```~~`~`~~`~", "`~~```~~`~`~~`~~`", "`~~```~~`~`~~`~~`~`", "`~~```~~`~`~~`~~`~`~``", "`~~```~~`~`~~`~~`~`~``~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~~`", "`~~```~~`~`~~`~~`~`~``~`~~`~~`~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~~`~`~~`~"]
+"values": ["", "`~~`", "`~~```", "`~~```~~", "`~~```~~`~", "`~~```~~`~`~", "`~~```~~`~`~~`~", "`~~```~~`~`~~`~~`", "`~~```~~`~`~~`~~`~`", "`~~```~~`~`~~`~~`~`~``", "`~~```~~`~`~~`~~`~`~``~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~~`", "`~~```~~`~`~~`~~`~`~``~`~~`~~`~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~~`~`~~`~", "", "~~`", "~~``~~", "~~``~~~~~~", "~~``~~~~~~`~~", "", "`~~~~", "`~~~~`~~~~~`", "", "~~~`", "~~~`~~~", "~~~`~~~~~~"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/player-cuts:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.53333, 20.2333, 38.4667, 44.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/friend-cuts:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 23.0667, 36.5, 46.6, 54.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_n06l5"]
@@ -1066,6 +1092,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [""]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/player-cuts:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/friend-cuts:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c5iux"]
 _data = {
@@ -1091,17 +1141,25 @@ offset_right = 42.256
 offset_bottom = 67.784
 grow_horizontal = 2
 
+[node name="player-cuts" type="Sprite2D" parent="UI/Panel"]
+visible = false
+position = Vector2(206.5, 69.5)
+scale = Vector2(0.277978, 0.265464)
+texture = ExtResource("1_q40wf")
+
+[node name="friend-cuts" type="Sprite2D" parent="UI/Panel"]
+visible = false
+position = Vector2(208, 62.25)
+scale = Vector2(0.334334, 0.340062)
+texture = ExtResource("2_tgbi6")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
 layout_mode = 0
 offset_right = 244.0
 offset_bottom = 92.0
 
-[node name="Label" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "~~~~`"
-
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(10, 60)
+custom_minimum_size = Vector2(5, 60)
 layout_mode = 2
 scroll_active = false
 
@@ -1145,7 +1203,7 @@ limit_bottom = 336
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, -1, 0, 0, 928, 0, 928, 178, 928, 181, 947, 182, 985, 182, 984, 225, 983, 250, 962, 250, 928, 252, 928, 336, 0, 336, 0, 1, -0.3625, 1.18125, -4, 3, -129, 186, -210, 422, 63, 523, 275, 560, 759, 566, 944, 556, 1270, 462, 1026, 48, 328, -483, 36, -298, 32, -160, -1, -1, -2, 0, -2, 1, -1, 1)
+polygon = PackedVector2Array(0, -1, 0, 0, 928, 0, 928, 178, 928, 181, 947, 182, 985, 182, 984, 225, 983, 250, 962, 250, 928, 252, 928, 336, 0, 336, 0, 1, -0.3625, 1.18125, -4, 3, -129, 186, -210, 422, 63, 523, 275, 560, 759, 566, 944, 556, 1270, 462, 1026, 48, 324, -224, 165, -159, 32, -160, -1, -1, -2, 0, -2, 1, -1, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
