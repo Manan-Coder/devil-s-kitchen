@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://p4n4dl422vcc"]
 
-[ext_resource type="Texture2D" uid="uid://cxrc7kdxb7rxk" path="res://art/objects/car.png" id="1_cqpnl"]
 [ext_resource type="Script" path="res://script/car.gd" id="2_sf7mc"]
+[ext_resource type="Texture2D" uid="uid://cxaxdy3ftlyeh" path="res://art/objects/cars.png" id="2_vw6os"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ewhbu"]
-atlas = ExtResource("1_cqpnl")
-region = Rect2(364, 0, 364, 76)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vikl"]
+atlas = ExtResource("2_vw6os")
+region = Rect2(112, 0, 112, 59)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hoyr3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ewhbu")
+"texture": SubResource("AtlasTexture_6vikl")
 }],
 "loop": true,
 "name": &"default",
@@ -19,17 +19,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbywm"]
-size = Vector2(81, 54)
+size = Vector2(79, 44)
 
 [node name="car" type="CharacterBody2D"]
 position = Vector2(303, 140)
 script = ExtResource("2_sf7mc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(17, 0)
+position = Vector2(124, 15)
 scale = Vector2(0.906593, 1)
 sprite_frames = SubResource("SpriteFrames_hoyr3")
+frame_progress = 0.479167
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(118.5, 11)
+position = Vector2(127.5, 18)
 shape = SubResource("RectangleShape2D_wbywm")
