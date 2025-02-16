@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dwd4e8cluyru3"]
+[gd_scene load_steps=25 format=4 uid="uid://dwd4e8cluyru3"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_b6uu6"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_vnyhm"]
@@ -1012,8 +1012,98 @@ sources/7 = SubResource("TileSetAtlasSource_uwk3p")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waedu"]
 size = Vector2(56, 70)
 
+[sub_resource type="Animation" id="Animation_lxbq5"]
+resource_name = "1st"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.13333, 1.2, 1.66667, 2.03333, 2.36667, 2.86667, 3.33333, 4.73333, 8.03333, 8.53333, 10.4333, 12.9, 13.4333, 14.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["~`~``~~~`~", "", "`~~`", "`~~```", "`~~```~~", "`~~```~~`~", "`~~```~~`~`~", "`~~```~~`~`~~`~", "`~~```~~`~`~~`~~`", "`~~```~~`~`~~`~~`~`", "`~~```~~`~`~~`~~`~`~``", "`~~```~~`~`~~`~~`~`~``~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~~`", "`~~```~~`~`~~`~~`~`~``~`~~`~~`~`~", "`~~```~~`~`~~`~~`~`~``~`~~`~~`~`~~`~"]
+}
+
+[sub_resource type="Animation" id="Animation_n06l5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5iux"]
+_data = {
+"1st": SubResource("Animation_lxbq5"),
+"RESET": SubResource("Animation_n06l5")
+}
+
 [node name="friend-scene" type="Node2D"]
 y_sort_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.472
+anchor_top = 0.042
+anchor_right = 0.472
+anchor_bottom = 0.042
+offset_left = -201.744
+offset_top = -24.216
+offset_right = 42.256
+offset_bottom = 67.784
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
+layout_mode = 0
+offset_right = 244.0
+offset_bottom = 92.0
+
+[node name="Label" type="Label" parent="UI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "~~~~`"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
+scroll_active = false
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -1064,5 +1154,10 @@ script = ExtResource("11_jtnno")
 [node name="portal_garage" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(956, 216)
 shape = SubResource("RectangleShape2D_waedu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c5iux")
+}
 
 [editable path="player"]
