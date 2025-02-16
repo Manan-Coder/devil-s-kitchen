@@ -433,8 +433,9 @@ shape = SubResource("CapsuleShape2D_hixyp")
 position = Vector2(41.8303, 9.59161)
 scale = Vector2(0.907893, 0.822227)
 sprite_frames = SubResource("SpriteFrames_cygnl")
-animation = &"side-walk"
-frame_progress = 0.977513
+animation = &"front-idle"
+frame = 1
+frame_progress = 0.746668
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(36.466, -114.295)
