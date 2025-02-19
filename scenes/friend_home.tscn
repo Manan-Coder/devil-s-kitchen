@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://dwd4e8cluyru3"]
+[gd_scene load_steps=43 format=4 uid="uid://dwd4e8cluyru3"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_b6uu6"]
 [ext_resource type="Texture2D" uid="uid://brv2yvpqs2wh0" path="res://art/characters/player.png" id="1_ran0i"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="10_466t4"]
 [ext_resource type="Script" path="res://script/portal_garage.gd" id="11_jtnno"]
 [ext_resource type="AudioStream" uid="uid://dmg72yd8nbps6" path="res://art/music/sound-effects/talk.mp3" id="14_ws2mw"]
+[ext_resource type="Script" path="res://script/talk-cutscene.gd" id="16_ox5na"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqowe"]
 bg_color = Color(0.133196, 0.133196, 0.133196, 1)
@@ -1101,7 +1102,7 @@ size = Vector2(56, 70)
 
 [sub_resource type="Animation" id="Animation_lxbq5"]
 resource_name = "1st"
-length = 100.0
+length = 55.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1258,17 +1259,17 @@ anchor_left = 0.472
 anchor_top = 0.042
 anchor_right = 0.472
 anchor_bottom = 0.042
-offset_left = -201.744
+offset_left = -549.744
 offset_top = -24.216
-offset_right = 42.256
-offset_bottom = 67.784
+offset_right = 388.256
+offset_bottom = 402.784
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lqowe")
 
 [node name="player-cuts" type="AnimatedSprite2D" parent="UI/Panel"]
 visible = false
-position = Vector2(198, 57.5)
-scale = Vector2(1.95833, 2.01667)
+position = Vector2(762.5, 269.5)
+scale = Vector2(9.27083, 8.85)
 sprite_frames = SubResource("SpriteFrames_eyhrj")
 animation = &"idle"
 frame = 1
@@ -1277,10 +1278,11 @@ script = ExtResource("2_7vpsj")
 
 [node name="friend-cuts" type="AnimatedSprite2D" parent="UI/Panel"]
 visible = false
-position = Vector2(209.5, 64)
-scale = Vector2(3.0625, 3)
+position = Vector2(791, 290)
+scale = Vector2(12.75, 12.125)
 sprite_frames = SubResource("SpriteFrames_i1qth")
 animation = &"idle"
+frame_progress = 0.19355
 script = ExtResource("4_o15pf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
@@ -1289,8 +1291,10 @@ offset_right = 244.0
 offset_bottom = 92.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(5, 60)
+custom_minimum_size = Vector2(900, 400)
 layout_mode = 2
+theme_override_font_sizes/italics_font_size = 0
+theme_override_font_sizes/normal_font_size = 50
 scroll_active = false
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1350,6 +1354,7 @@ shape = SubResource("RectangleShape2D_waedu")
 libraries = {
 "": SubResource("AnimationLibrary_c5iux")
 }
+script = ExtResource("16_ox5na")
 
 [node name="talk" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ws2mw")

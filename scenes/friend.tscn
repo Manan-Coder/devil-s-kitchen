@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://bmd4y7jd5xptw"]
+[gd_scene load_steps=42 format=3 uid="uid://bmd4y7jd5xptw"]
 
 [ext_resource type="Script" path="res://script/friend.gd" id="1_pjaat"]
 [ext_resource type="Texture2D" uid="uid://pi5n1bwm4obo" path="res://art/characters/hero1.png" id="1_w3grx"]
 [ext_resource type="Script" path="res://script/friend-detection.gd" id="3_m2ivy"]
+[ext_resource type="Script" path="res://script/anim.gd" id="4_i8an5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1kao"]
 atlas = ExtResource("1_w3grx")
@@ -289,6 +290,9 @@ size = Vector2(10.4348, 16.5217)
 [sub_resource type="CircleShape2D" id="CircleShape2D_50fx7"]
 radius = 78.2609
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ll2vk"]
+radius = 34.8261
+
 [node name="friend" type="CharacterBody2D"]
 scale = Vector2(1.15, 1.15)
 collision_layer = 2
@@ -309,7 +313,15 @@ monitorable = false
 script = ExtResource("3_m2ivy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(-0.869568, 0.869566)
 shape = SubResource("CircleShape2D_50fx7")
+
+[node name="anim" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("4_i8an5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="anim"]
+shape = SubResource("CircleShape2D_ll2vk")
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

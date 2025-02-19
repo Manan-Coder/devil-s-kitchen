@@ -8,13 +8,13 @@ var player = null
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
 
-func _physics_process(delta: float) -> void:
-	if player_follow:
-		position += (player.position - position) / speed
-		$AnimatedSprite2D.play("front-walk")
-		print("friend approached	")
-	else:
-		$AnimatedSprite2D.play("front-idle")
+#func _physics_process(delta: float) -> void:
+	#if player_follow:
+		#position += (player.position - position) / speed
+		#$AnimatedSprite2D.play("front-walk")
+		#print("friend approached	")
+	#else:
+		#$AnimatedSprite2D.play("front-idle")
 	
 
 

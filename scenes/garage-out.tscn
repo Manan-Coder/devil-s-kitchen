@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cng1xtgmrmhtp"]
+[gd_scene load_steps=22 format=4 uid="uid://cng1xtgmrmhtp"]
 
 [ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_dik03"]
 [ext_resource type="Texture2D" uid="uid://dovgnya0ic12k" path="res://art/tilesets/plains.png" id="2_18x3r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://hf6rs6bget6g" path="res://art/tilesets/fences.png" id="6_uvwoa"]
 [ext_resource type="Texture2D" uid="uid://d0orl6fnjnah5" path="res://art/objects/objects.png" id="7_wletm"]
 [ext_resource type="PackedScene" uid="uid://bmd4y7jd5xptw" path="res://scenes/friend.tscn" id="10_nlgtg"]
+[ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="11_djn1f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43rvu"]
 texture = ExtResource("1_dik03")
@@ -1152,3 +1153,29 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundary"]
 polygon = PackedVector2Array(0, 0, 29, 0, 2144, 0, 2144, 992, 316, 994, 320, 1075, 223, 1077, 159, 1075, 160, 991, 0, 992, 0, 2, -12, 6, -340, 407, -401, 578, -382, 697, -368, 754, -359, 792, -202, 1273, 973, 1463, 1991, 1463, 2386, 1192, 2705, 635, 2567, 69, 2362, -130, 1844, -168, 1111, -164, 98, -154)
+
+[node name="player" parent="." instance=ExtResource("11_djn1f")]
+position = Vector2(800, 204)
+
+[node name="CollisionShape2D" parent="player" index="0"]
+position = Vector2(-673, -21)
+
+[node name="AnimatedSprite2D" parent="player" index="1"]
+position = Vector2(-673, -28)
+
+[node name="Camera2D" parent="player" index="2"]
+position = Vector2(-613, -2)
+limit_left = 0
+limit_right = 2144
+limit_bottom = 992
+
+[node name="AudioStreamPlayer2D" parent="player" index="3"]
+position = Vector2(-364, 1)
+
+[node name="Area2D" parent="player" index="4"]
+position = Vector2(-382, 12)
+
+[node name="CollisionShape2D" parent="player/Area2D" index="0"]
+position = Vector2(-291, -33)
+
+[editable path="player"]

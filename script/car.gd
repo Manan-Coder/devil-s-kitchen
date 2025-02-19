@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+var input_blocked = true
 
 @export var acceleration: float = 800.0       
 @export var friction: float = 500.0           
@@ -9,7 +9,10 @@ extends CharacterBody2D
 @export var turn_speed: float = 2.0            
 @export var drift_factor: float = 0.9         
 func _physics_process(delta: float) -> void:
-
+	if input_blocked:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return  
 	var forward: Vector2 = Vector2(cos(rotation), sin(rotation))
 	
 
@@ -59,3 +62,7 @@ func _physics_process(delta: float) -> void:
 	velocity = forward * velocity.dot(forward) + lateral_velocity * drift_factor
 	
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	input_blocked = false

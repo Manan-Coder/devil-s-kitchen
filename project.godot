@@ -19,6 +19,7 @@ config/icon="res://art/icon.svg"
 
 global="*res://script/global.gd"
 Bgm="*res://scenes/bgm.tscn"
+GlobalSignals="*res://script/GlobalSignals.gd"
 
 [editor_plugins]
 

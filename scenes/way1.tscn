@@ -353,7 +353,6 @@ tile_set = SubResource("TileSet_edxno")
 
 [node name="player" parent="." instance=ExtResource("4_7gij2")]
 position = Vector2(-24, 211)
-collision_layer = 2
 
 [node name="AnimatedSprite2D" parent="player" index="1"]
 position = Vector2(41, 10)
