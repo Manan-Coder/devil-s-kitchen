@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var input_blocked = true
-
+@onready var cam = $Camera2D
 @export var acceleration: float = 800.0       
 @export var friction: float = 500.0           
 @export var brake_friction: float = 1500.0      
@@ -12,6 +12,7 @@ func _physics_process(delta: float) -> void:
 	if input_blocked:
 		velocity = Vector2.ZERO
 		move_and_slide()
+		cam.enabled = false
 		return  
 	var forward: Vector2 = Vector2(cos(rotation), sin(rotation))
 	
@@ -66,3 +67,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	input_blocked = false
+	cam.enabled = true
+	$"engine-start".play()
+	$"engine-start".finished.connect(_on_engine_start_finished)
+
+func _on_engine_start_finished():
+	$engine.play()

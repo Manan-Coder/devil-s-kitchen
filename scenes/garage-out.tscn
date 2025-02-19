@@ -1178,4 +1178,5 @@ position = Vector2(-382, 12)
 [node name="CollisionShape2D" parent="player/Area2D" index="0"]
 position = Vector2(-291, -33)
 
+[editable path="car"]
 [editable path="player"]

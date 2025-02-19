@@ -4,14 +4,13 @@ class_name player
 const speed = 100
 var current_dir: String = "none"
 @onready var walk_gravel = $AudioStreamPlayer2D
-
+@onready var cam = $Camera2D
 var input_blocked = false 
 var interactions = 0
 
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
 	print("Player ready!")
-
 	var err = GlobalSignals.connect("player_near_friend", _on_player_entered)
 	if err != OK:
 		print("Error connecting signal: ", err)
@@ -87,5 +86,6 @@ func _on_area_2d_body_entered(body: Node2D):
 	velocity = Vector2.ZERO
 	move_and_slide()
 	visible = false
+	cam.enabled = false
 	return
 	

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://p4n4dl422vcc"]
+[gd_scene load_steps=9 format=3 uid="uid://p4n4dl422vcc"]
 
 [ext_resource type="Script" path="res://script/car.gd" id="2_sf7mc"]
 [ext_resource type="Texture2D" uid="uid://cxaxdy3ftlyeh" path="res://art/objects/cars.png" id="2_vw6os"]
+[ext_resource type="AudioStream" uid="uid://cfdgd2vsllg7s" path="res://art/music/sound-effects/engine.mp3" id="3_tmrv2"]
+[ext_resource type="AudioStream" uid="uid://bqw4vi5fc6670" path="res://art/music/sound-effects/engine-start.mp3" id="4_2k154"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vikl"]
 atlas = ExtResource("2_vw6os")
@@ -46,5 +48,18 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(127, 18)
 shape = SubResource("CircleShape2D_texbm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 2144
+limit_bottom = 992
+
+[node name="engine" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tmrv2")
+
+[node name="engine-start" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2k154")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
