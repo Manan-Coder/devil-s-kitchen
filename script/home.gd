@@ -8,6 +8,7 @@ func _on_portal_body_entered(body):
 func _process(delta: float):
 	change_scenes()
 
+
 func change_scenes():
 	if global.transition_scene:
 		if global.current_scene == "home":
