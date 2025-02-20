@@ -70,14 +70,14 @@ func play_anim(movement):
 		anim.play("back-walk" if movement == 1 else "back-idle")
 
 func _on_player_entered():
-	if interactions == 0:
+	if global.friend_interaction_player_pause == 0:
 		print("Blocking player movement for 55 seconds")
 		input_blocked = true  
 
 		await get_tree().create_timer(55.0).timeout 
 
 		input_blocked = false
-		interactions = 1
+		global.friend_interaction_player_pause = 1
 		print("Inputs back!")
 
 

@@ -12,10 +12,7 @@ func _ready():
 
 func _on_body_entered(body):
 	print("Body entered: ", body.name)
-	if body is player:
-		print("Player detected!")
-		#GlobalSignals.emit_signal("player_near_friend") 
-		#get_tree().change_scene_to_file("res://scenes/way1.tscn")
+	print("Player detected!")
 		
 func _on_body_exited(body):
 	print("Body exited: ", body.name)

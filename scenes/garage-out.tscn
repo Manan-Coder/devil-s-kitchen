@@ -1162,10 +1162,10 @@ polygon = PackedVector2Array(0, 0, 29, 0, 2144, 0, 2144, 992, 316, 992, 316, 105
 position = Vector2(800, 204)
 
 [node name="CollisionShape2D" parent="player" index="0"]
-position = Vector2(-673, -21)
+position = Vector2(-772, -69)
 
 [node name="AnimatedSprite2D" parent="player" index="1"]
-position = Vector2(-673, -28)
+position = Vector2(-772, -76)
 
 [node name="Camera2D" parent="player" index="2"]
 position = Vector2(-666, 5)
@@ -1180,7 +1180,7 @@ position = Vector2(-364, 1)
 position = Vector2(-382, 12)
 
 [node name="CollisionShape2D" parent="player/Area2D" index="0"]
-position = Vector2(-291, -33)
+position = Vector2(-390, -81)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 8

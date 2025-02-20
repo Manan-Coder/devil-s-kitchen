@@ -9,9 +9,11 @@ var player_start_home_x = 0
 var player_start_home_y = 0
 
 func finish_changescenes():
-	transition_scene = false  # reset flag
-	# Toggle current_scene for demonstration; adjust as needed.
+	transition_scene = false
+
 	if current_scene == "home":
 		current_scene = "way1"
 	else:
 		current_scene = "home"
+var friend_interaction_player_pause = 0
+var friend_interaction_cutscene = 0

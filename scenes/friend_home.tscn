@@ -1321,13 +1321,13 @@ position = Vector2(442, 115)
 
 [node name="player" parent="." instance=ExtResource("10_466t4")]
 y_sort_enabled = true
-position = Vector2(86, 94)
+position = Vector2(134, 129)
 
 [node name="CollisionShape2D" parent="player" index="0"]
-position = Vector2(-53, -10)
+position = Vector2(-109, -53)
 
 [node name="AnimatedSprite2D" parent="player" index="1"]
-position = Vector2(-54, -16)
+position = Vector2(-109, -60)
 
 [node name="Camera2D" parent="player" index="2"]
 position = Vector2(50, -48)
@@ -1336,6 +1336,9 @@ limit_bottom = 336
 
 [node name="AudioStreamPlayer2D" parent="player" index="3"]
 position = Vector2(102, 34)
+
+[node name="CollisionShape2D" parent="player/Area2D" index="0"]
+position = Vector2(-109, -53)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

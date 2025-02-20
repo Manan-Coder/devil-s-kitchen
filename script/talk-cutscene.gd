@@ -10,11 +10,9 @@ func _ready():
 
 
 func _on_player_entered():
-	if interactions == 0:
+	if global.friend_interaction_cutscene == 0:
 		print("trigerring talking cutscene")
 		play("1st")
-		interactions = 1
-
-		
+		global.friend_interaction_cutscene = 1		
 	else:
 		pass
