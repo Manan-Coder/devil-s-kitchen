@@ -1149,6 +1149,24 @@ tile_set = SubResource("TileSet_a80i4")
 position = Vector2(1855, 266)
 scale = Vector2(0.5, 0.5)
 
+[node name="AnimatedSprite2D" parent="car" index="0"]
+position = Vector2(92, -6)
+
+[node name="CollisionShape2D" parent="car" index="1"]
+position = Vector2(96, -4)
+
+[node name="CollisionShape2D" parent="car/Area2D" index="0"]
+position = Vector2(96, -2)
+
+[node name="Camera2D" parent="car" index="3"]
+position = Vector2(-84, 120)
+
+[node name="engine" parent="car" index="4"]
+position = Vector2(-674, -20)
+
+[node name="engine-start" parent="car" index="5"]
+position = Vector2(-58, 90)
+
 [node name="friend" parent="." instance=ExtResource("10_nlgtg")]
 position = Vector2(24, 164)
 
@@ -1193,4 +1211,5 @@ shape = SubResource("RectangleShape2D_fm0wc")
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 
 [editable path="car"]
+[editable path="friend"]
 [editable path="player"]

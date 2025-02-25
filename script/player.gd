@@ -1,6 +1,6 @@
 extends CharacterBody2D
-class_name player
 
+class_name player
 const speed = 100
 var current_dir: String = "none"
 @onready var walk_gravel = $AudioStreamPlayer2D
@@ -87,5 +87,5 @@ func _on_area_2d_body_entered(body: Node2D):
 	move_and_slide()
 	visible = false
 	cam.enabled = false
+	GlobalSignals.emit_signal("player_entered_car")
 	return
-	

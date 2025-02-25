@@ -17,3 +17,4 @@ func finish_changescenes():
 		current_scene = "home"
 var friend_interaction_player_pause = 0
 var friend_interaction_cutscene = 0
+var friend_interaction_friend_pause = 0

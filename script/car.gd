@@ -68,6 +68,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	input_blocked = false
 	cam.enabled = true
+	GlobalSignals.emit_signal("player_entered_car",self)
 	$"engine-start".play()
 	$"engine-start".finished.connect(_on_engine_start_finished)
 
