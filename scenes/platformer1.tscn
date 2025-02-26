@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cshn1fdo2j85q"]
+[gd_scene load_steps=21 format=4 uid="uid://cshn1fdo2j85q"]
 
 [ext_resource type="Texture2D" uid="uid://calk6vvll01xy" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_isul0"]
 [ext_resource type="Texture2D" uid="uid://cbfks2uc8i0tn" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_0dgus"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://desn1mrw26q08" path="res://art/Legacy-Fantasy - High Forest 2.3/Trees/Dark-Tree.png" id="6_5wh3i"]
 [ext_resource type="Texture2D" uid="uid://16piu2wnqerl" path="res://art/Legacy-Fantasy - High Forest 2.3/Trees/Green-Tree.png" id="7_2uglm"]
 [ext_resource type="PackedScene" uid="uid://dtatvf68dsn78" path="res://scenes/player-platformer.tscn" id="8_vma8k"]
+[ext_resource type="PackedScene" uid="uid://dpuadqa36i2a7" path="res://scenes/friend-platformer.tscn" id="9_myusr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjbp3"]
 texture = ExtResource("2_oqq2h")
@@ -735,6 +736,9 @@ size = Vector2(1231.33, 149.667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vs0v"]
 size = Vector2(63.3333, 253.667)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qviw7"]
+size = Vector2(1202.5, 75.6667)
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 scale = Vector2(3, 3)
@@ -768,6 +772,15 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(27, 219.333)
 
+[node name="AnimatedSprite2D" parent="player" index="0"]
+position = Vector2(19, -4)
+animation = &"side-idle"
+frame = 0
+frame_progress = 0.0181525
+
+[node name="CollisionShape2D" parent="player" index="1"]
+position = Vector2(19.6667, 5.33368)
+
 [node name="Camera2D" parent="player" index="2"]
 limit_left = 0
 limit_top = 0
@@ -782,5 +795,14 @@ shape = SubResource("RectangleShape2D_u8u3j")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-32, 116.833)
 shape = SubResource("RectangleShape2D_5vs0v")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(601.417, -38)
+shape = SubResource("RectangleShape2D_qviw7")
+
+[node name="friend" parent="." instance=ExtResource("9_myusr")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(13, 224.333)
 
 [editable path="player"]

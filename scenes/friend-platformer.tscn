@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpuadqa36i2a7"]
+
+[ext_resource type="Texture2D" uid="uid://pi5n1bwm4obo" path="res://art/characters/hero1.png" id="1_4l642"]
+[ext_resource type="Script" path="res://script/friend_platformer.gd" id="1_gnwd8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj0o2"]
+atlas = ExtResource("1_4l642")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o48v3"]
+atlas = ExtResource("1_4l642")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xat5h"]
+atlas = ExtResource("1_4l642")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxan6"]
+atlas = ExtResource("1_4l642")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b16o"]
+atlas = ExtResource("1_4l642")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bchem"]
+atlas = ExtResource("1_4l642")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqr2n"]
+atlas = ExtResource("1_4l642")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1exw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj0o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o48v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xat5h")
+}],
+"loop": true,
+"name": &"side-idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxan6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b16o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bchem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqr2n")
+}],
+"loop": true,
+"name": &"side-walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjtnj"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_473f1"]
+radius = 210.268
+
+[node name="friend" type="CharacterBody2D"]
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_gnwd8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s1exw")
+animation = &"side-idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tjtnj")
+
+[node name="detection" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource("CircleShape2D_473f1")
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
