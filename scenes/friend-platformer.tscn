@@ -74,7 +74,7 @@ radius = 210.268
 
 [node name="friend" type="CharacterBody2D"]
 scale = Vector2(1.25, 1.25)
-collision_layer = 8
+collision_layer = 9
 script = ExtResource("1_gnwd8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
