@@ -74,6 +74,7 @@ radius = 210.268
 
 [node name="friend" type="CharacterBody2D"]
 scale = Vector2(1.25, 1.25)
+collision_layer = 8
 script = ExtResource("1_gnwd8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -87,7 +88,17 @@ shape = SubResource("CapsuleShape2D_tjtnj")
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(3.05176e-05, 0)
 shape = SubResource("CircleShape2D_473f1")
+
+[node name="WallRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(38.4, 0)
+
+[node name="GroundRaycast" type="RayCast2D" parent="."]
+position = Vector2(10.4, 0)
+
+[node name="GapRaycast" type="RayCast2D" parent="."]
+position = Vector2(24.8, 0)
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
