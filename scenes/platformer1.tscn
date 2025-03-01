@@ -2745,8 +2745,6 @@ position = Vector2(27, 219.333)
 
 [node name="AnimatedSprite2D" parent="player" index="0"]
 position = Vector2(19, -4)
-animation = &"side-idle"
-frame = 0
 frame_progress = 0.0181525
 
 [node name="CollisionShape2D" parent="player" index="1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dtatvf68dsn78"]
+[gd_scene load_steps=22 format=3 uid="uid://dtatvf68dsn78"]
 
 [ext_resource type="Texture2D" uid="uid://brv2yvpqs2wh0" path="res://art/characters/player.png" id="1_5ckrm"]
 [ext_resource type="Script" path="res://script/player_platformer.gd" id="1_y7u35"]
@@ -137,18 +137,29 @@ animations = [{
 radius = 6.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1bar"]
+radius = 11.0
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_y7u35")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_muidm")
-animation = &"side-attack"
-frame = 1
-frame_progress = 0.477626
+animation = &"side-idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_cm6u2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="boar_detection" type="Area2D" parent="."]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boar_detection"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_d1bar")
+
+[connection signal="body_entered" from="boar_detection" to="." method="_on_boar_detection_body_entered"]
+[connection signal="body_exited" from="boar_detection" to="." method="_on_boar_detection_body_exited"]
