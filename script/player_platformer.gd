@@ -27,7 +27,7 @@ var bullet_damage = 1
 
 var is_jumping = false
 var jump_timer = 0.0
-
+@onready var cam = $Camera2D
 func _ready() -> void:
 	$AnimatedSprite2D.play("side-idle")
 	
@@ -261,3 +261,11 @@ func fire():
 	
 
 	get_parent().add_child(bullet)
+
+
+func _on_change_pos_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("player in")
+	position = Vector2(-3300,900)
+	cam.limit_left = -10000
+	cam.limit_bottom = 3700
+	cam.limit_top = 2400
