@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://peuguu4u5xnj"]
+[gd_scene load_steps=28 format=4 uid="uid://peuguu4u5xnj"]
 
 [ext_resource type="Texture2D" uid="uid://cbfks2uc8i0tn" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_n84v1"]
 [ext_resource type="Texture2D" uid="uid://bsohqkhw5lu68" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Buildings.png" id="2_r7ysh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://script/mine-portal.gd" id="5_md4gr"]
 [ext_resource type="PackedScene" uid="uid://6jma2o67eyps" path="res://scenes/boar.tscn" id="6_ykha6"]
 [ext_resource type="PackedScene" uid="uid://cbx0bdhmnhwy1" path="res://scenes/gun.tscn" id="7_6makp"]
+[ext_resource type="Script" path="res://script/mine_level_change.gd" id="8_w6wji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3p5a"]
 texture = ExtResource("1_n84v1")
@@ -477,6 +478,9 @@ size = Vector2(8.99997, 2.66666)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmea8"]
 size = Vector2(16.3333, 54.8333)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn7gp"]
+size = Vector2(63.3333, 81.6667)
+
 [node name="mine-outside" type="Node2D"]
 scale = Vector2(3, 3)
 
@@ -570,6 +574,17 @@ z_index = 3
 y_sort_enabled = true
 position = Vector2(250.333, 303.333)
 
+[node name="level_change" type="Area2D" parent="."]
+z_index = 2
+y_sort_enabled = true
+collision_mask = 9
+script = ExtResource("8_w6wji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_change"]
+position = Vector2(1316, 277.333)
+shape = SubResource("RectangleShape2D_yn7gp")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="level_change" to="level_change" method="_on_area_shape_entered"]
 
 [editable path="player"]
