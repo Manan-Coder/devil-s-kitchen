@@ -268,4 +268,7 @@ func _on_change_pos_area_shape_entered(area_rid: RID, area: Area2D, area_shape_i
 	position = Vector2(-3300,900)
 	cam.limit_left = -10000
 	cam.limit_bottom = 3700
-	cam.limit_top = 2400
+	cam.limit_top = 600
+	z_index = 3
+	global.potion_active = true
+	global.make_spidey = false
