@@ -1801,7 +1801,7 @@ tile_set = SubResource("TileSet_ye3ms")
 collision_mask = 9
 
 [node name="change_pos" type="CollisionShape2D" parent="change_pos"]
-position = Vector2(106.333, 197.333)
+position = Vector2(2687.33, 199)
 shape = SubResource("RectangleShape2D_woxqw")
 
 [node name="platform_mine_portal" type="Area2D" parent="."]
