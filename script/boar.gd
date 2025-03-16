@@ -109,6 +109,8 @@ func die() -> void:
 	animated_sprite.play("attack")
 	await get_tree().create_timer(1.0).timeout
 	visible = false
+	global.boars_killed+=1
+	print(global.boars_killed)
 	queue_free()
 
 func _on_detection_body_entered(body) -> void:

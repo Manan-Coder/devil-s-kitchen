@@ -270,5 +270,9 @@ func _on_change_pos_area_shape_entered(area_rid: RID, area: Area2D, area_shape_i
 	cam.limit_bottom = 3700
 	cam.limit_top = 600
 	z_index = 3
-	global.potion_active = true
+	global.potion_active = false
 	global.make_spidey = false
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	global.potion_active = true
