@@ -20,5 +20,5 @@ var friend_interaction_cutscene = 0
 var friend_interaction_friend_pause = 0
 var potion_active = false
 var gun_got = false
-var make_spidey = true
+var make_spidey = false
 var boars_killed = 0

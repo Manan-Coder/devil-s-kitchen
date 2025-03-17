@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cshn1fdo2j85q"]
+[gd_scene load_steps=42 format=4 uid="uid://cshn1fdo2j85q"]
 
 [ext_resource type="Texture2D" uid="uid://calk6vvll01xy" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_isul0"]
 [ext_resource type="Texture2D" uid="uid://cbfks2uc8i0tn" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_0dgus"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dtatvf68dsn78" path="res://scenes/player-platformer.tscn" id="8_vma8k"]
 [ext_resource type="PackedScene" uid="uid://dpuadqa36i2a7" path="res://scenes/friend-platformer.tscn" id="9_myusr"]
 [ext_resource type="Script" path="res://script/dead_1.gd" id="11_41co5"]
+[ext_resource type="Script" path="res://script/arrows.gd" id="12_jmk5d"]
+[ext_resource type="Script" path="res://script/cutscene_fall.gd" id="13_rn3rw"]
+[ext_resource type="Script" path="res://script/fall_anim.gd" id="14_7d5vu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_076xf"]
 texture = ExtResource("2_oqq2h")
@@ -2326,8 +2329,17 @@ size = Vector2(4637.5, 75.6667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kn1e"]
 size = Vector2(479.5, 141.667)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gm3x"]
+size = Vector2(439, 19.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkc2m"]
+size = Vector2(14, 13.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy8d5"]
+size = Vector2(22.6662, 347)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6si2"]
-size = Vector2(3269.33, 20)
+size = Vector2(2101.67, 20)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lletu"]
 texture = ExtResource("8_s1k5u")
@@ -2667,6 +2679,70 @@ texture = ExtResource("8_s1k5u")
 [sub_resource type="TileSet" id="TileSet_oruiu"]
 sources/0 = SubResource("TileSetAtlasSource_lletu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tochw"]
+size = Vector2(29.3335, 67)
+
+[sub_resource type="Animation" id="Animation_3f508"]
+resource_name = "main"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("friend:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.666667, 0.966667, 1.94594, 2.2, 2.43333, 2.66667, 2.9, 3.23333, 3.46667, 3.73333, 3.96667, 4.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11, 225.667), Vector2(3892.33, 209.333), Vector2(3981.33, 119), Vector2(4019, 84.6667), Vector2(4119, 320), Vector2(4121, 330), Vector2(4137, 321.333), Vector2(4157.67, 324), Vector2(4174, 343), Vector2(4181, 347), Vector2(4209.67, 335.333), Vector2(4223.33, 345), Vector2(4229, 359.667), Vector2(4232.67, 394.333)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("friend:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.366667, 0, 0.266667, 1.66667, 1.9, 2.2, 2.43333, 2.66667, 2.7, 2.9, 3.23333, 3.46667, 3.73333, 3.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.53058, 1.23918, 1.59349, 2.65465, 3.00895, 3.36325, 3.71755, 4.77871, 5.66359, 6.0179, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_or7h1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("friend:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3902.33, 210.333)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("friend:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kemf8"]
+_data = {
+"RESET": SubResource("Animation_or7h1"),
+"main": SubResource("Animation_3f508")
+}
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 scale = Vector2(3, 3)
@@ -2757,6 +2833,7 @@ limit_right = 100000
 limit_bottom = 365
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(645.834, 309.833)
@@ -2782,10 +2859,26 @@ polygon = PackedVector2Array(-10.5, -10.5, -15.5, -23.8333, 15.1666, -23.8333, 1
 position = Vector2(3970.33, 270.667)
 polygon = PackedVector2Array(-6.3335, -30.3333, 9.6665, -30.6667, 10.6665, -29.6667, 11.6665, -28.6667, 12.6665, -26.6667, 12.6665, -19.6667, 11.6665, -17.6667, 10.6665, -15.6667, 9.33325, -14.6667, 25.6665, -14.6667, 26.6665, -13.6667, 27.6665, -12.6667, 28.6665, -10.6667, 28.6665, -3.66669, 27.6665, -1.66669, 26.6665, 0.333313, 25.6665, 1.33331, 41.6665, 1.33331, 41.6665, 2.33331, 42.6665, 2.33331, 42.6665, 3.33331, 43.6665, 3.33331, 43.6665, 5.33331, 44.6665, 5.33331, 44.6665, 12.3333, 43.6665, 12.3333, 43.6665, 14.3333, 42.6665, 14.3333, 42.6665, 16.3333, 41.6665, 16.3333, 41.6665, 17, 41.6665, 17.3333, 57.6665, 17.3333, 58.6665, 18.3333, 59.6665, 19.3333, 60.6665, 21.3333, 60.6665, 28.3333, 59.6665, 30.3333, 58.6665, 32.3333, 57.6665, 33, 57.6665, 33.3333, 89.6665, 33.3333, 90.6665, 34.3333, 91.6665, 35.3333, 92.6665, 37.3333, 92.6665, 44.3333, 91.6665, 46.3333, 90.6665, 48.3333, 89.6665, 49.3333, 121.667, 49.3333, 122.667, 50.3333, 123.667, 51.3333, 124.667, 53.3333, 124.667, 60.3333, 123.667, 62.3333, 122.667, 64.3333, 121.667, 65.3333, 185.667, 65.3333, 186.667, 66.3333, 187.667, 67.3333, 188.667, 69.3333, 188.667, 76.3333, 187.667, 78.3333, 186.667, 80.3333, 185.667, 81.3333, 233.667, 81.3333, 234.667, 82.3333, 235.667, 83.3333, 236.667, 85.3333, 236.667, 92.3333, 235.667, 94.3333, 234.667, 96.3333, 233.667, 97.3333, -18.6667, 97.3333, -16.6667, -20.3333)
 
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4423.5, 390.833)
+shape = SubResource("RectangleShape2D_5gm3x")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4211.33, 374.333)
+shape = SubResource("RectangleShape2D_hkc2m")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4635.33, 370.667)
+shape = SubResource("RectangleShape2D_hkc2m")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4186.67, 176.833)
+shape = SubResource("RectangleShape2D_sy8d5")
+
 [node name="friend" parent="." instance=ExtResource("9_myusr")]
 z_index = -1
 y_sort_enabled = true
-position = Vector2(9.33331, 227)
+position = Vector2(11, 225.667)
 
 [node name="dead1" type="Area2D" parent="."]
 position = Vector2(6.33333, 4.33333)
@@ -2793,13 +2886,33 @@ collision_mask = 8
 script = ExtResource("11_41co5")
 
 [node name="dead1" type="CollisionShape2D" parent="dead1"]
-position = Vector2(3008, 372)
+position = Vector2(2423.17, 407)
 shape = SubResource("RectangleShape2D_n6si2")
 
 [node name="arrows" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD0AAoAAAAAABIAAGDVAAgAAAAAABIAADA=")
+enabled = false
 tile_set = SubResource("TileSet_oruiu")
+script = ExtResource("12_jmk5d")
+
+[node name="cutscene_fall" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("13_rn3rw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cutscene_fall"]
+position = Vector2(3946.67, 187.5)
+shape = SubResource("RectangleShape2D_tochw")
+
+[node name="fall_anim" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_kemf8")
+}
+script = ExtResource("14_7d5vu")
 
 [connection signal="body_entered" from="dead1" to="dead1" method="_on_body_entered"]
+[connection signal="body_entered" from="cutscene_fall" to="arrows" method="_on_cutscene_fall_body_entered"]
+[connection signal="body_entered" from="cutscene_fall" to="cutscene_fall" method="_on_body_entered"]
+[connection signal="body_entered" from="cutscene_fall" to="fall_anim" method="_on_cutscene_fall_body_entered"]
 
 [editable path="player"]
