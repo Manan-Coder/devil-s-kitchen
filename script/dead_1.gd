@@ -12,4 +12,9 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	get_tree().change_scene_to_file("res://scenes/platformer1.tscn")
+	if global.friend_fallen == 1:
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://scenes/mine_outside.tscn")
+	else:
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://scenes/platformer1.tscn")		

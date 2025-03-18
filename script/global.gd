@@ -22,3 +22,5 @@ var potion_active = false
 var gun_got = false
 var make_spidey = false
 var boars_killed = 0
+var friend_fallen = 0
+var boar_inter = 0

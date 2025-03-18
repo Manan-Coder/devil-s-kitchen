@@ -228,7 +228,14 @@ func die() -> void:
 	
 
 	await get_tree().create_timer(2.0).timeout
-	await get_tree().change_scene_to_file("res://scenes/mine_outside.tscn")
+	if global.boar_inter == 0:
+		await get_tree().change_scene_to_file("res://scenes/mine_outside.tscn")
+	else:
+		set_physics_process(true)
+		velocity = Vector2.ZERO
+		modulate = Color(1,1,1,1)
+		position = Vector2(-3300,900)
+		
 
 func _on_boar_detection_body_entered(body: Node2D) -> void:
 	print("boar-detected")
@@ -275,4 +282,9 @@ func _on_change_pos_area_shape_entered(area_rid: RID, area: Area2D, area_shape_i
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	global.boar_inter = 1
 	global.potion_active = true
+
+
+func _on_restart_area_body_entered(body: Node2D) -> void:
+	position = Vector2(0,0)

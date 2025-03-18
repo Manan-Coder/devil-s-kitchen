@@ -492,7 +492,6 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/Area2D"]
 position = Vector2(-2.97813, -9.01416)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_e2mu2")
 
 [node name="cutscene" type="AnimationPlayer" parent="."]
