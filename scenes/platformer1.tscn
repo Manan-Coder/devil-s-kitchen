@@ -2890,7 +2890,7 @@ position = Vector2(2423.17, 407)
 shape = SubResource("RectangleShape2D_n6si2")
 
 [node name="arrows" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD0AAoAAAAAABIAAGDVAAgAAAAAABIAADA=")
+tile_map_data = PackedByteArray("AAD0AAoAAAAAABIAAGDVAAgAAAAAABIAADAAAQ4AAAAAABIAAAA=")
 enabled = false
 tile_set = SubResource("TileSet_oruiu")
 script = ExtResource("12_jmk5d")

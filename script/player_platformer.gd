@@ -83,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	var potion_active = global.potion_active 
 	if Input.is_action_just_pressed("ui_accept") && global.gun_got == true:
 		fire()
+		await get_tree().create_timer(1).timeout
 
 	if is_taking_boar_damage:
 		damage_timer += delta

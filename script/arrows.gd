@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_cutscene_fall_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(5).timeout
 	enabled = true
 	print("arrowsssss!!!")
