@@ -26,3 +26,4 @@ var friend_fallen = 0
 var boar_inter = 0
 var boar_killed_out = 0
 var level_boar = 0
+var key_got = false

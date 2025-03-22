@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvwwxd2gt66pu"]
+
+[ext_resource type="Texture2D" uid="uid://qekxxin0d7v8" path="res://art/tilesets/grass.png" id="1_1xqqx"]
+[ext_resource type="PackedScene" uid="uid://dtatvf68dsn78" path="res://scenes/player-platformer.tscn" id="2_ls8vx"]
+[ext_resource type="Script" path="res://script/smth.gd" id="3_61w28"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o8ab"]
+size = Vector2(438, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnd6p"]
+size = Vector2(42, 74)
+
+[node name="smth" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("2_ls8vx")]
+position = Vector2(12, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(297.5, 119)
+scale = Vector2(2.6875, 4.75)
+texture = ExtResource("1_1xqqx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(220, 176)
+shape = SubResource("RectangleShape2D_8o8ab")
+
+[node name="smth" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("3_61w28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="smth"]
+position = Vector2(297, 118)
+shape = SubResource("RectangleShape2D_vnd6p")
+
+[connection signal="body_entered" from="smth" to="smth" method="_on_body_entered"]
