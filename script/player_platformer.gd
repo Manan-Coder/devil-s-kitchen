@@ -236,7 +236,7 @@ func die() -> void:
 
 	print("Player died!")
 	
-
+	$AnimatedSprite2D.play("dead")
 	await get_tree().create_timer(2.0).timeout
 	if global.boar_inter == 0:
 		await get_tree().change_scene_to_file("res://scenes/mine_outside.tscn")
