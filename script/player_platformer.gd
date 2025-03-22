@@ -81,9 +81,21 @@ func update_health_bar() -> void:
 
 func _physics_process(delta: float) -> void:
 	var potion_active = global.potion_active 
-	if Input.is_action_just_pressed("ui_accept") && global.gun_got == true:
+
+
+	if Input.is_action_just_pressed("ui_accept") and global.gun_got and can_shoot:
+		can_shoot = false
 		fire()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1).timeout  
+		can_shoot = true
+
+	
+	if Input.is_action_just_pressed("ui_select") and can_shoot:
+		can_shoot = false
+		shoot()
+		await get_tree().create_timer(bullet_cooldown).timeout
+		can_shoot = true
+	
 
 	if is_taking_boar_damage:
 		damage_timer += delta
@@ -91,12 +103,7 @@ func _physics_process(delta: float) -> void:
 			take_damage(1)
 			damage_timer = 0.0
 	
-	if Input.is_action_just_pressed("ui_select") and can_shoot:
-		shoot()
-		can_shoot = false
-		await get_tree().create_timer(bullet_cooldown).timeout
-		can_shoot = true
-	
+
 	if not is_on_floor():
 		if is_jumping and Input.is_action_pressed("ui_up") and jump_timer < JUMP_HOLD_TIME:
 			velocity.y += (POTION_JUMP_HOLD_GRAVITY if potion_active else JUMP_HOLD_GRAVITY) * delta
@@ -112,6 +119,7 @@ func _physics_process(delta: float) -> void:
 		is_jumping = true
 		jump_timer = 0.0  
 		
+
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction != 0:
 		velocity.x = direction * SPEED
@@ -123,6 +131,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("side-idle")
 			
 	move_and_slide()
+
 
 func shoot() -> void:
 	if global.make_spidey == true:
@@ -236,6 +245,7 @@ func die() -> void:
 		velocity = Vector2.ZERO
 		modulate = Color(1,1,1,1)
 		position = Vector2(-3300,900)
+		health = 5
 		
 
 func _on_boar_detection_body_entered(body: Node2D) -> void:

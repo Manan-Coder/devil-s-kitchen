@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var health = 4
 var max_health = 4
-var speed = 250.0
+var speed = 350
 var player_reference = null
 const ATTACK_RANGE = 30.0 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -109,7 +109,11 @@ func die() -> void:
 	animated_sprite.play("attack")
 	await get_tree().create_timer(1.0).timeout
 	visible = false
-	global.boars_killed+=1
+	if global.level_boar == 0:
+		global.boar_killed_out+=1
+	if global.level_boar == 1:
+		global.boars_killed+=1
+	
 	print(global.boars_killed)
 	queue_free()
 
