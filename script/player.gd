@@ -89,3 +89,12 @@ func _on_area_2d_body_entered(body: Node2D):
 	cam.enabled = false
 	GlobalSignals.emit_signal("player_entered_car")
 	return
+
+
+func _on_vent_1_body_entered(body: Node2D) -> void:
+	if global.key_got:
+		await get_tree().create_timer(2).timeout
+		visible = false
+		position = Vector2(405,166)
+		visible = true
+		global.key_got = false

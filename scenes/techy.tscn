@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c3wmamssff70t"]
+[gd_scene load_steps=20 format=4 uid="uid://c3wmamssff70t"]
 
 [ext_resource type="Texture2D" uid="uid://c1ftckrvkc8rh" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x1.png" id="1_o2f8q"]
 [ext_resource type="Texture2D" uid="uid://dr3wdopra8mcb" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x2.png" id="2_ac68s"]
@@ -1166,6 +1166,9 @@ radius = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihcld"]
 size = Vector2(31, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c6tf"]
+size = Vector2(31, 32)
+
 [node name="anti-gravity" type="Node2D"]
 y_sort_enabled = true
 
@@ -1228,5 +1231,17 @@ y_sort_enabled = true
 position = Vector2(264.5, 136)
 shape = SubResource("RectangleShape2D_ihcld")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(452, 179)
+
+[node name="vent2" type="Area2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vent2"]
+position = Vector2(648.5, 280)
+shape = SubResource("RectangleShape2D_7c6tf")
+
 [connection signal="body_entered" from="key1" to="key_1" method="_on_key_1_body_entered"]
+[connection signal="body_entered" from="vent1" to="player" method="_on_vent_1_body_entered"]
 [connection signal="body_entered" from="vent1" to="vent1" method="_on_body_entered"]
