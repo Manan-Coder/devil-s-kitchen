@@ -299,3 +299,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_restart_area_body_entered(body: Node2D) -> void:
 	position = Vector2(0,0)
+
+
+
+	
+
+
+func _on_vent_2_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	$Camera2D.enabled = true
+	
+
+
+func _on_lvl_1_end_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	print("player in")
+	$Camera2D.enabled = false

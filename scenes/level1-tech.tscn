@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://rckkljbwq6af"]
+[gd_scene load_steps=13 format=4 uid="uid://rckkljbwq6af"]
 
 [ext_resource type="Texture2D" uid="uid://cbfks2uc8i0tn" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_qngg2"]
 [ext_resource type="PackedScene" uid="uid://dtatvf68dsn78" path="res://scenes/player-platformer.tscn" id="2_2wnol"]
+[ext_resource type="Script" path="res://script/back_1.gd" id="3_yp03n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0g0ei"]
 texture = ExtResource("1_qngg2")
@@ -31,7 +32,7 @@ sources/0 = SubResource("TileSetAtlasSource_ppgfc")
 size = Vector2(139.333, 1637.33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84qyq"]
-size = Vector2(2459.67, 27.3343)
+size = Vector2(2702.33, 38.3322)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3dai"]
 size = Vector2(18.3333, 1656)
@@ -39,8 +40,11 @@ size = Vector2(18.3333, 1656)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8aq37"]
 size = Vector2(2482.67, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxouu"]
+size = Vector2(12.6666, 72.6667)
+
 [node name="Node2D" type="Node2D"]
-position = Vector2(-70, -8564)
+position = Vector2(563, 10416)
 scale = Vector2(3, 3)
 
 [node name="level1-main" type="TileMapLayer" parent="."]
@@ -56,7 +60,7 @@ tile_set = SubResource("TileSet_5yp2e")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(0, 0.333333)
+position = Vector2(204, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 5
@@ -81,7 +85,18 @@ position = Vector2(65.6667, 2582.33)
 
 [node name="Camera2D" parent="player" index="2"]
 limit_left = -50
-limit_top = -2476
+limit_top = -3000
 limit_right = 5000
+
+[node name="back1" type="Area2D" parent="."]
+position = Vector2(240, 27)
+collision_mask = 8
+script = ExtResource("3_yp03n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="back1"]
+position = Vector2(1685.33, 2946)
+shape = SubResource("RectangleShape2D_vxouu")
+
+[connection signal="body_entered" from="back1" to="back1" method="_on_body_entered"]
 
 [editable path="player"]

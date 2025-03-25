@@ -98,3 +98,18 @@ func _on_vent_1_body_entered(body: Node2D) -> void:
 		position = Vector2(405,166)
 		visible = true
 		global.key_got = false
+
+
+func _on_vent_2_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	$Camera2D.enabled = false
+	velocity = Vector2.ZERO
+	
+	
+
+
+func _on_lvl_1_end_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	$Camera2D.enabled = true
+	position = Vector2(755,190)
+	

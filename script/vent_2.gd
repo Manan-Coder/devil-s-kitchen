@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,13 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_key_1_body_entered(body: Node2D) -> void:
-	visible = false
-	global.key_got = true
-
-
-func _on_key_2_body_entered(body: Node2D) -> void:
-	visible = false
-	global.key_got = true

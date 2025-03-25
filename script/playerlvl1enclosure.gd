@@ -1,4 +1,4 @@
-extends Sprite2D
+extends StaticBody2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,11 +11,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_key_1_body_entered(body: Node2D) -> void:
-	visible = false
-	global.key_got = true
-
-
-func _on_key_2_body_entered(body: Node2D) -> void:
-	visible = false
-	global.key_got = true
+func _on_vent_2_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	$CollisionShape2D4.disabled = true
+	$CollisionShape2D5.disabled = true
+	self.set_deferred("collision_layer",0)
+	print("player free")
