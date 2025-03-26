@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://c3wmamssff70t"]
+[gd_scene load_steps=60 format=4 uid="uid://c3wmamssff70t"]
 
 [ext_resource type="Texture2D" uid="uid://c1ftckrvkc8rh" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x1.png" id="1_o2f8q"]
 [ext_resource type="Texture2D" uid="uid://dr3wdopra8mcb" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x2.png" id="2_ac68s"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://script/playerlvl1enclosure.gd" id="12_rlxte"]
 [ext_resource type="Texture2D" uid="uid://cxg51qmfot8sc" path="res://art/brick_tiles_v2.png" id="14_i6dh4"]
 [ext_resource type="Script" path="res://script/antigrav.gd" id="15_korks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6a0x"]
+size = Vector2(16.5, 16.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mh57"]
 texture = ExtResource("1_o2f8q")
@@ -1315,6 +1318,15 @@ size = Vector2(64.5, 208)
 y_sort_enabled = true
 position = Vector2(1, 0)
 
+[node name="lvlchange" type="Area2D" parent="."]
+position = Vector2(34824, 0)
+scale = Vector2(2, 2)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lvlchange"]
+position = Vector2(-16911.8, 68.25)
+shape = SubResource("RectangleShape2D_u6a0x")
+
 [node name="walls" type="TileMapLayer" parent="."]
 z_index = 2
 y_sort_enabled = true
@@ -1333,7 +1345,6 @@ position = Vector2(43, 107)
 scale = Vector2(1.2, 1.2)
 
 [node name="Camera2D" parent="player" index="2"]
-enabled = false
 limit_right = 1150
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -1512,6 +1523,7 @@ tile_set = SubResource("TileSet_advor")
 position = Vector2(17372, 678.5)
 
 [node name="Camera2D" parent="lvl2/player" index="2"]
+enabled = false
 zoom = Vector2(1.5, 1.5)
 limit_left = 34706
 limit_top = 39
@@ -1586,6 +1598,7 @@ shape = SubResource("RectangleShape2D_ulsuw")
 position = Vector2(18218.8, 680)
 shape = SubResource("RectangleShape2D_d0hax")
 
+[connection signal="body_entered" from="lvlchange" to="player" method="_on_lvlchange_body_entered"]
 [connection signal="body_entered" from="key1" to="key_1" method="_on_key_1_body_entered"]
 [connection signal="body_entered" from="vent1" to="player" method="_on_vent_1_body_entered"]
 [connection signal="body_entered" from="vent1" to="vent1" method="_on_body_entered"]

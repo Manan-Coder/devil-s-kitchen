@@ -8,9 +8,7 @@ var current_dir: String = "none"
 
 var input_blocked = false 
 var interactions = 0
-var gravity = 300
-var grav_sec = gravity
-var is_in_antigrav = false
+
 
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
@@ -27,33 +25,30 @@ func _physics_process(delta):
 		return  
 	
 	player_movement(delta)
-	
-	# Handle gravity and anti-gravity
-	if is_in_antigrav:
-		# Apply constant upward velocity when in anti-gravity
-		velocity.y = -300
-		print("Going up!!! Velocity Y:", velocity.y)
-	else:
-		# Normal gravity application
-		velocity.y += gravity * delta
+
 	
 	move_and_slide()
 
 func player_movement(delta):
 	var input_vector = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		0
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-	
+
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized() * speed
-		velocity.x = input_vector.x
+		velocity = input_vector
 		
-		current_dir = "right" if velocity.x > 0 else "left"
+		if abs(velocity.x) > abs(velocity.y):
+			current_dir = "right" if velocity.x > 0 else "left"
+		else:
+			current_dir = "down" if velocity.y > 0 else "up"
+
 		play_anim(1)
 	else:
-		velocity.x = 0
+		velocity = Vector2.ZERO
 		play_anim(0)
+
 
 
 func play_anim(movement):
@@ -122,3 +117,7 @@ func _on_lvl_1_end_body_entered(body: Node2D) -> void:
 	$Camera2D.enabled = true
 	position = Vector2(755,190)
 	
+
+
+func _on_lvlchange_body_entered(body: Node2D) -> void:
+	$Camera2D.enabled = false

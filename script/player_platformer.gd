@@ -9,10 +9,10 @@ var is_anti_gravity = false
 var jump_force = -500
 var is_in_anti_grav = false
 var rotation_speed = 3.0
-const NORMAL_JUMP_VELOCITY = -1000.0
-const MIN_JUMP_VELOCITY = -550.0
+const NORMAL_JUMP_VELOCITY = -900.0
+const MIN_JUMP_VELOCITY = -1200.0
 const JUMP_HOLD_GRAVITY = 125.0
-const JUMP_HOLD_TIME = 0.3
+const JUMP_HOLD_TIME = 0.8
 const POTION_JUMP_VELOCITY = -900.0  
 const POTION_JUMP_HOLD_GRAVITY = 250.0  
 var anti_num = 0
@@ -89,7 +89,7 @@ func update_health_bar() -> void:
 func _physics_process(delta: float) -> void:
 
 	var potion_active = global.potion_active 
-	if is_anti_gravity:
+	if global.level_grav == 1 and is_anti_gravity:
 		velocity.y += anti_gravity * delta
 	else:
 		velocity.y += GRAVITY * delta
@@ -131,9 +131,14 @@ func _physics_process(delta: float) -> void:
 		jump_timer = 0.0  
 		
 	if Input.is_action_pressed("ui_up") and is_on_floor():
-		velocity.y = POTION_JUMP_VELOCITY if potion_active else MIN_JUMP_VELOCITY
+		if not potion_active:
+			velocity.y = POTION_JUMP_VELOCITY
+		else:
+			velocity.y = MIN_JUMP_VELOCITY*1.2
 		is_jumping = true
 		jump_timer = 0.0  
+		if abs(velocity.x) < 100:
+			velocity.x += (200 if $AnimatedSprite2D.flip_h == false else -200)
 		
 
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -145,18 +150,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor():
 			$AnimatedSprite2D.play("side-idle")
-	if is_anti_gravity:
-# In anti-gravity, float up when pressing up
-		if Input.is_action_pressed("ui_up"):
-			velocity.y -= 20  # Tweak this for levitation strength
-		elif Input.is_action_pressed("ui_down"):
-			velocity.y += 20  # Optional: move down
-	else:
-# Normal jump
-		if Input.is_action_just_pressed("ui_up") and is_on_floor():
-			velocity.y = jump_force
+	if is_anti_gravity and global.level_grav == 1:
 
-	# Finally, move and slide with the computed velocity
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 20 
+		elif Input.is_action_pressed("ui_down"):
+			velocity.y += 20  
+
+
 	move_and_slide()
 
 
@@ -356,3 +357,7 @@ func _on_antigrav_body_exited(body: Node2D) -> void:
 	current_gravity = normal_gravity
 	is_anti_gravity = false
 	is_in_anti_grav = false 
+
+
+func _on_lvlchange_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
