@@ -1,12 +1,16 @@
 extends CharacterBody2D
-
 class_name player
+
 const speed = 100
 var current_dir: String = "none"
 @onready var walk_gravel = $AudioStreamPlayer2D
 @onready var cam = $Camera2D
+
 var input_blocked = false 
 var interactions = 0
+var gravity = 300
+var grav_sec = gravity
+var is_in_antigrav = false
 
 func _ready():
 	$AnimatedSprite2D.play("front-idle")
@@ -22,30 +26,35 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("back-idle")	
 		return  
 	
-
 	player_movement(delta)
+	
+	# Handle gravity and anti-gravity
+	if is_in_antigrav:
+		# Apply constant upward velocity when in anti-gravity
+		velocity.y = -300
+		print("Going up!!! Velocity Y:", velocity.y)
+	else:
+		# Normal gravity application
+		velocity.y += gravity * delta
+	
+	move_and_slide()
 
 func player_movement(delta):
 	var input_vector = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		0
 	)
 	
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized() * speed
-		velocity = input_vector
-
-		if abs(velocity.x) > abs(velocity.y):
-			current_dir = "right" if velocity.x > 0 else "left"
-		else:
-			current_dir = "down" if velocity.y > 0 else "up"
-			
+		velocity.x = input_vector.x
+		
+		current_dir = "right" if velocity.x > 0 else "left"
 		play_anim(1)
 	else:
-		velocity = Vector2.ZERO
+		velocity.x = 0
 		play_anim(0)
-		
-	move_and_slide()
+
 
 func play_anim(movement):
 	var anim = $AnimatedSprite2D

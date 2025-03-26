@@ -2,13 +2,20 @@ extends CharacterBody2D
 class_name player_p
 const SPEED = 300.0
 const GRAVITY = 980.0
+var normal_gravity = GRAVITY
+var current_gravity = GRAVITY
+var anti_gravity = -200
+var is_anti_gravity = false
+var jump_force = -500
+var is_in_anti_grav = false
+var rotation_speed = 3.0
 const NORMAL_JUMP_VELOCITY = -1000.0
 const MIN_JUMP_VELOCITY = -550.0
 const JUMP_HOLD_GRAVITY = 125.0
 const JUMP_HOLD_TIME = 0.3
 const POTION_JUMP_VELOCITY = -900.0  
 const POTION_JUMP_HOLD_GRAVITY = 250.0  
-
+var anti_num = 0
 var bullet_path = preload("res://scenes/bullet.tscn")
 
 var health = 5
@@ -24,7 +31,8 @@ var can_shoot = true
 var bullet_cooldown = 0.5 
 var bullet_speed = 600.0   
 var bullet_damage = 1     
-
+var grav = 300
+var custom_gravity = grav
 var is_jumping = false
 var jump_timer = 0.0
 @onready var cam = $Camera2D
@@ -78,17 +86,25 @@ func update_health_bar() -> void:
 		margin.add_child(bar)
 		
 		health_bar.add_child(margin)
-
 func _physics_process(delta: float) -> void:
+
 	var potion_active = global.potion_active 
+	if is_anti_gravity:
+		velocity.y += anti_gravity * delta
+	else:
+		velocity.y += GRAVITY * delta
 
-
+	
 	if Input.is_action_just_pressed("ui_accept") and global.gun_got and can_shoot:
 		can_shoot = false
 		fire()
 		await get_tree().create_timer(1).timeout  
 		can_shoot = true
-
+	
+	if is_in_anti_grav:
+		rotation += rotation_speed * delta
+	else:
+		rotation = move_toward(rotation, 0, rotation_speed * delta)
 	
 	if Input.is_action_just_pressed("ui_select") and can_shoot:
 		can_shoot = false
@@ -109,7 +125,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y += (POTION_JUMP_HOLD_GRAVITY if potion_active else JUMP_HOLD_GRAVITY) * delta
 			jump_timer += delta
 		else:
-			velocity.y += GRAVITY * delta
+			velocity.y += current_gravity * delta
 	else:
 		is_jumping = false
 		jump_timer = 0.0  
@@ -129,7 +145,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor():
 			$AnimatedSprite2D.play("side-idle")
-			
+	if is_anti_gravity:
+# In anti-gravity, float up when pressing up
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 20  # Tweak this for levitation strength
+		elif Input.is_action_pressed("ui_down"):
+			velocity.y += 20  # Optional: move down
+	else:
+# Normal jump
+		if Input.is_action_just_pressed("ui_up") and is_on_floor():
+			velocity.y = jump_force
+
+	# Finally, move and slide with the computed velocity
 	move_and_slide()
 
 
@@ -315,3 +342,17 @@ func _on_lvl_1_end_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
 	print("player in")
 	$Camera2D.enabled = false
+
+
+func _on_antigrav_body_entered(body: Node2D) -> void:
+	print("in anti grav")
+	current_gravity = anti_gravity
+	is_anti_gravity = true
+	is_in_anti_grav = true
+
+
+func _on_antigrav_body_exited(body: Node2D) -> void:
+	print("out anti grav")
+	current_gravity = normal_gravity
+	is_anti_gravity = false
+	is_in_anti_grav = false 
