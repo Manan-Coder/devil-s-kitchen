@@ -360,4 +360,10 @@ func _on_antigrav_body_exited(body: Node2D) -> void:
 
 
 func _on_lvlchange_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	$Camera2D.enabled = true
+
+
+func _on_lvl_back_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	$Camera2D.enabled = false
+	print("camera off of anti")

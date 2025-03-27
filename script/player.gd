@@ -120,4 +120,18 @@ func _on_lvl_1_end_body_entered(body: Node2D) -> void:
 
 
 func _on_lvlchange_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
 	$Camera2D.enabled = false
+
+
+func _on_lvl_back_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	$Camera2D.enabled = true
+	position = Vector2(1046,86)
+
+
+func _on_poschange_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	position = Vector2(667,195)
+	await get_tree().create_timer(2).timeout
+	position = Vector2(667,93)
