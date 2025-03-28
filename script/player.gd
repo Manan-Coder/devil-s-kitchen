@@ -97,17 +97,21 @@ func _on_area_2d_body_entered(body: Node2D):
 
 func _on_vent_1_body_entered(body: Node2D) -> void:
 	if global.key_got:
-		await get_tree().create_timer(2).timeout
-		visible = false
-		position = Vector2(405,166)
-		visible = true
-		global.key_got = false
+		global.vents_crossed+=1
+		if global.vents_crossed==1:
+			await get_tree().create_timer(2).timeout
+			visible = false
+			position = Vector2(405,166)
+			visible = true
+			global.key_got = false
 
 
 func _on_vent_2_body_entered(body: Node2D) -> void:
-	await get_tree().create_timer(2).timeout
-	$Camera2D.enabled = false
-	velocity = Vector2.ZERO
+	global.vent2+=1
+	if global.vent2 == 1:
+		await get_tree().create_timer(2).timeout
+		$Camera2D.enabled = false
+		velocity = Vector2.ZERO
 	
 	
 
@@ -131,7 +135,33 @@ func _on_lvl_back_body_entered(body: Node2D) -> void:
 
 
 func _on_poschange_body_entered(body: Node2D) -> void:
+	global.vent3+=1
+	if global.vent3 == 1:
+		await get_tree().create_timer(2).timeout
+		position = Vector2(667,195)
+		await get_tree().create_timer(2).timeout
+		position = Vector2(667,93)
+
+
+func _on_machine_body_entered(body: Node2D) -> void:
+	if global.shard_got:
+		global.shard_in = true
+		print("shard in machine")
+
+
+func _on_vent_body_entered(body: Node2D) -> void:
+	if global.shard_in:
+		print("ready to change")
+		await get_tree().create_timer(2).timeout
+		position = Vector2(406,159)
+
+
+func _on_ventdark_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
-	position = Vector2(667,195)
+	print("changing!!")
+	await get_tree().change_scene_to_file("")
+
+
+func _on_levelchangetodark_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
-	position = Vector2(667,93)
+	await get_tree().change_scene_to_file("res://scenes/techy_2.tscn")

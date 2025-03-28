@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://blm1k71840vps"]
+[gd_scene load_steps=23 format=4 uid="uid://blm1k71840vps"]
 
 [ext_resource type="Texture2D" uid="uid://c1ftckrvkc8rh" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x1.png" id="1_0ke85"]
 [ext_resource type="Texture2D" uid="uid://dr3wdopra8mcb" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x2.png" id="2_o8lkg"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://rvigb0nbc0oc" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/UI/ui x2.png" id="4_yqg3a"]
 [ext_resource type="PackedScene" uid="uid://v06enkhom816" path="res://scenes/player.tscn" id="5_vm3ec"]
 [ext_resource type="Texture2D" uid="uid://chip62mvb6wby" path="res://art/image (3).png" id="6_4w7x5"]
+[ext_resource type="Script" path="res://script/shard_2.gd" id="7_48jjv"]
+[ext_resource type="Texture2D" uid="uid://cp46xvsj15wyg" path="res://art/Walking_Machine_Art/UI_0.png" id="8_mwjtc"]
+[ext_resource type="Script" path="res://script/shard_3.gd" id="9_roucr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrts0"]
 texture = ExtResource("1_0ke85")
@@ -1170,7 +1173,13 @@ fill_from = Vector2(0.481651, 0.541284)
 size = Vector2(32, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2r8xr"]
-radius = 48.0416
+radius = 13.0384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu4jq"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cwm7"]
+size = Vector2(32, 32)
 
 [node name="techy2" type="Node2D"]
 
@@ -1188,12 +1197,12 @@ tile_set = SubResource("TileSet_bvonr")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(80, 17, 79, 45, 80, 70, 78, 72, 48, 72, 48, 168, 72, 168, 72, 264, 47, 264, 48, 295, 48, 296, 78, 296, 80, 299, 80, 328, 104, 328, 104, 298, 106, 296, 110, 296, 112, 298, 112, 328, 136, 328, 136, 266, 138, 264, 168, 264, 168, 328, 200, 328, 200, 264, 232, 264, 232, 328, 232, 329, 257, 329, 257, 297, 258, 296, 262, 296, 264, 298, 264, 328, 289, 328, 289, 299, 288, 298, 290, 296, 319, 296, 320, 296, 320, 264, 299, 264, 297, 262, 296, 168, 320, 168, 320, 72, 290, 72, 288, 70, 288, 40, 264, 40, 264, 70, 262, 72, 258, 72, 256, 70, 256, 40, 232, 40, 232, 104, 201, 104, 200, 40, 168, 40, 168, 104, 136, 104, 136, 40, 112, 40, 112, 70, 110, 72, 106, 72, 104, 70, 104, 40, 80, 40, 98, 23, 144, 9, 218, -9, 307, -7, 326, 18, 345, 98, 343, 229, 325, 361, -26, 359, -20, 54)
+polygon = PackedVector2Array(80, 17, 79, 45, 80, 70, 78, 72, 48, 72, 48, 168, 72, 168, 72, 264, 47, 264, 48, 295, 48, 296, 78, 296, 80, 299, 80, 328, 104, 328, 104, 298, 106, 296, 110, 296, 112, 298, 112, 328, 136, 328, 136, 266, 138, 264, 168, 264, 169, 295, 199, 295, 200, 264, 232, 264, 232, 328, 232, 329, 257, 329, 257, 297, 258, 296, 262, 296, 264, 298, 264, 328, 289, 328, 289, 299, 288, 298, 290, 296, 319, 296, 320, 296, 320, 264, 299, 264, 297, 262, 296, 168, 320, 168, 320, 72, 290, 72, 288, 70, 288, 40, 264, 40, 264, 70, 262, 72, 258, 72, 256, 70, 256, 40, 232, 40, 232, 104, 201, 104, 200, 40, 168, 40, 168, 104, 136, 104, 136, 40, 112, 40, 112, 70, 110, 72, 106, 72, 104, 70, 104, 40, 80, 40, 98, 23, 144, 9, 218, -9, 307, -7, 326, 18, 345, 98, 343, 229, 325, 361, -26, 359, -20, 54)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(350.484, 0.0808682)
 scale = Vector2(1.01563, 1.00065)
-polygon = PackedVector2Array(80, 17, 79, 45, 80, 70, 78, 72, 48, 72, 48, 168, 72, 168, 72, 264, 47, 264, 48, 295, 48, 296, 78, 296, 80, 299, 80, 328, 104, 328, 104, 298, 106, 296, 110, 296, 112, 298, 112, 328, 136, 328, 136, 266, 138, 264, 168, 264, 168, 328, 199.399, 328.705, 198.415, 263.748, 229.922, 263.748, 229.922, 326.707, 229.922, 327.706, 253.553, 327.706, 253.553, 297.726, 255.522, 295.727, 259.461, 295.727, 261.43, 296.726, 261.43, 327.706, 285.061, 327.706, 285.061, 297.726, 287.03, 295.727, 290, 296, 316.568, 295.727, 316.569, 263.747, 299, 264, 293.923, 261.748, 292.938, 167.809, 316.568, 167.81, 316.568, 71.8724, 290, 72, 288, 70, 288, 40, 261.43, 39.8932, 261.43, 70.8731, 260.445, 71.8724, 255.522, 71.8724, 253.553, 69.8737, 254.538, 39.8932, 229.922, 39.8932, 229.922, 103.852, 201.369, 103.852, 199.399, 101.853, 198.415, 39.8932, 168, 40, 168, 104, 136, 104, 136, 40, 112, 40, 112, 70, 110, 72, 106, 72, 104, 70, 104, 40, 80, 40, 98, 23, 144, 9, 218, -9, 307, -7, 326, 18, 345, 98, 343, 229, 324.445, 359.685, -13.2765, 358.686, -20, 54)
+polygon = PackedVector2Array(80, 17, 79, 45, 80, 70, 78, 72, 48, 72, 48, 168, 72, 168, 72, 264, 47, 264, 48, 295, 48, 296, 78, 296, 80, 299, 80, 328, 104, 328, 104, 298, 106, 296, 110, 296, 112, 298, 112, 328, 136, 328, 136, 266, 138, 264, 166.907, 263.748, 166.907, 327.706, 199.399, 328.705, 198.415, 263.748, 229.922, 263.748, 229.922, 326.707, 229.922, 327.706, 253.553, 327.706, 253.553, 297.726, 255.522, 295.727, 259.461, 295.727, 261.43, 296.726, 261.43, 327.706, 285.061, 327.706, 285.061, 297.726, 287.03, 295.727, 290, 296, 316.568, 295.727, 316.569, 263.747, 299, 264, 293.923, 261.748, 292.938, 167.809, 316.568, 167.81, 316.568, 71.8724, 290, 72, 288, 70, 288, 40, 261.43, 39.8932, 261.43, 70.8731, 260.445, 71.8724, 255.522, 71.8724, 253.553, 69.8737, 254.538, 39.8932, 229.922, 39.8932, 229.922, 103.852, 201.369, 103.852, 199.399, 101.853, 198.415, 39.8932, 168, 40, 168, 104, 136, 104, 136, 40, 112, 40, 112, 70, 110, 72, 106, 72, 104, 70, 104, 40, 80, 40, 98, 23, 144, 9, 218, -9, 307, -7, 326, 18, 345, 98, 343, 229, 324.445, 359.685, -13.2765, 358.686, -20, 54)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(702.484, 0.0808682)
@@ -1222,27 +1231,62 @@ texture = SubResource("GradientTexture2D_d6ev1")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2
 y_sort_enabled = true
-offset_left = 2200.0
-offset_top = -991.0
-offset_right = 4348.0
-offset_bottom = 91.0
+offset_left = -431.0
+offset_top = -429.0
+offset_right = 1717.0
+offset_bottom = 653.0
 color = Color(0.0196078, 0.0196078, 0.0196078, 0.831373)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="shard2" type="Sprite2D" parent="."]
 position = Vector2(58, 281)
 scale = Vector2(0.495312, 0.498904)
 texture = ExtResource("6_4w7x5")
+script = ExtResource("7_48jjv")
 
-[node name="machine1" type="Area2D" parent="."]
+[node name="machine" type="Area2D" parent="."]
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="machine1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="machine"]
 position = Vector2(184, 301)
 shape = SubResource("RectangleShape2D_p0ylx")
 
 [node name="shard" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shard"]
 position = Vector2(58, 281)
 shape = SubResource("CircleShape2D_2r8xr")
+
+[node name="vent" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vent"]
+position = Vector2(265, 136)
+shape = SubResource("RectangleShape2D_gu4jq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(183.75, 300.625)
+scale = Vector2(0.122, 0.27375)
+texture = ExtResource("8_mwjtc")
+
+[node name="shard3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(184, 300)
+scale = Vector2(0.495312, 0.498904)
+texture = ExtResource("6_4w7x5")
+script = ExtResource("9_roucr")
+
+[node name="ventdark" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ventdark"]
+position = Vector2(649, 280)
+shape = SubResource("RectangleShape2D_4cwm7")
+
+[connection signal="body_entered" from="machine" to="player" method="_on_machine_body_entered"]
+[connection signal="body_entered" from="machine" to="shard3" method="_on_machine_body_entered"]
+[connection signal="body_entered" from="shard" to="shard2" method="_on_shard_body_entered"]
+[connection signal="body_entered" from="vent" to="player" method="_on_vent_body_entered"]
+[connection signal="body_entered" from="ventdark" to="player" method="_on_ventdark_body_entered"]
 
 [editable path="player"]
