@@ -36,3 +36,4 @@ var vent3 = 0
 var vent4 = 0
 var vent5 = 0
 var vent6 = 0
+var light_shard_got = false

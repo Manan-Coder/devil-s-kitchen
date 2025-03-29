@@ -159,9 +159,14 @@ func _on_vent_body_entered(body: Node2D) -> void:
 func _on_ventdark_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
 	print("changing!!")
-	await get_tree().change_scene_to_file("")
+	position = Vector2(757,193)
 
 
 func _on_levelchangetodark_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
 	await get_tree().change_scene_to_file("res://scenes/techy_2.tscn")
+
+
+func _on_lightmachine_body_entered(body: Node2D) -> void:
+	if global.light_shard_got:
+		$PointLight2D.visible = false
