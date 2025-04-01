@@ -367,3 +367,7 @@ func _on_lvl_back_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
 	$Camera2D.enabled = false
 	print("camera off of anti")
+
+
+func _on_poschangearea_body_entered(body: Node2D) -> void:
+	position = Vector2(4339,325)

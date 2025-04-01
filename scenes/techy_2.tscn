@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://blm1k71840vps"]
+[gd_scene load_steps=30 format=4 uid="uid://blm1k71840vps"]
 
 [ext_resource type="Texture2D" uid="uid://c1ftckrvkc8rh" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x1.png" id="1_0ke85"]
 [ext_resource type="Texture2D" uid="uid://dr3wdopra8mcb" path="res://art/Tech Dungeon Roguelite - Asset Pack (DEMO) 2/tileset x2.png" id="2_o8lkg"]
@@ -1190,6 +1190,9 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqe4a"]
 size = Vector2(32, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3kus"]
+size = Vector2(33, 32)
+
 [node name="techy2" type="Node2D"]
 
 [node name="walls" type="TileMapLayer" parent="."]
@@ -1240,10 +1243,10 @@ texture = SubResource("GradientTexture2D_d6ev1")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2
 y_sort_enabled = true
-offset_left = -457.0
-offset_top = -407.0
-offset_right = 1691.0
-offset_bottom = 675.0
+offset_left = 642.0
+offset_top = 495.0
+offset_right = 2790.0
+offset_bottom = 1577.0
 color = Color(0.0196078, 0.0196078, 0.0196078, 0.831373)
 script = ExtResource("6_7qrk4")
 
@@ -1324,6 +1327,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lightmachine"]
 position = Vector2(888, 296)
 shape = SubResource("RectangleShape2D_kqe4a")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1000.5, 136)
+shape = SubResource("RectangleShape2D_e3kus")
 
 [connection signal="body_entered" from="machine" to="player" method="_on_machine_body_entered"]
 [connection signal="body_entered" from="machine" to="shard3" method="_on_machine_body_entered"]

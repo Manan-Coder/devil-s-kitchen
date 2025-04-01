@@ -1244,7 +1244,7 @@ size = Vector2(14, 13.3333)
 size = Vector2(22.6662, 347)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6si2"]
-size = Vector2(2101.67, 20)
+size = Vector2(2126.67, 20)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lletu"]
 texture = ExtResource("8_s1k5u")
@@ -1791,7 +1791,7 @@ collision_mask = 8
 script = ExtResource("11_41co5")
 
 [node name="dead1" type="CollisionShape2D" parent="dead1"]
-position = Vector2(2423.17, 407)
+position = Vector2(2425, 407)
 shape = SubResource("RectangleShape2D_n6si2")
 
 [node name="arrows" type="TileMapLayer" parent="."]
