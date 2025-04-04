@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c2a16o5yyofu3"]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 740.0
+offset_bottom = 413.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 541.0
+offset_bottom = 194.0
+text = "Congratulations, you saved your friend. 
+
+Things in life never go as planned, thats what might have happened with you while trying your best to save him, but you never gave up. This needs guts.
+Good Job
+
+Good Bye, my friend o7"

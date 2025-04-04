@@ -1243,10 +1243,10 @@ texture = SubResource("GradientTexture2D_d6ev1")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2
 y_sort_enabled = true
-offset_left = 642.0
-offset_top = 495.0
-offset_right = 2790.0
-offset_bottom = 1577.0
+offset_left = -290.0
+offset_top = -314.0
+offset_right = 1858.0
+offset_bottom = 768.0
 color = Color(0.0196078, 0.0196078, 0.0196078, 0.831373)
 script = ExtResource("6_7qrk4")
 
@@ -1328,10 +1328,10 @@ collision_mask = 2
 position = Vector2(888, 296)
 shape = SubResource("RectangleShape2D_kqe4a")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="levelball" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levelball"]
 position = Vector2(1000.5, 136)
 shape = SubResource("RectangleShape2D_e3kus")
 
@@ -1344,5 +1344,6 @@ shape = SubResource("RectangleShape2D_e3kus")
 [connection signal="body_entered" from="lightmachine" to="player" method="_on_lightmachine_body_entered"]
 [connection signal="body_entered" from="lightmachine" to="ColorRect" method="_on_lightmachine_body_entered"]
 [connection signal="body_entered" from="lightmachine" to="Sprite2D4" method="_on_lightmachine_body_entered"]
+[connection signal="body_entered" from="levelball" to="player" method="_on_levelball_body_entered"]
 
 [editable path="player"]

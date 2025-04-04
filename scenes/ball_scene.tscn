@@ -30,7 +30,7 @@ size = Vector2(31.3333, 151.667)
 size = Vector2(4028, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8p8g"]
-size = Vector2(496.667, 125.5)
+size = Vector2(857.337, 125.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7amyi"]
 size = Vector2(0, 191.667)
@@ -264,16 +264,18 @@ script = ExtResource("13_bsrsr")
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="poschangearea"]
-position = Vector2(4768.33, 561)
+position = Vector2(4948.67, 561)
 shape = SubResource("RectangleShape2D_t8p8g")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="lastlvlchange" type="Area2D" parent="."]
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lastlvlchange"]
 position = Vector2(4176, 53.5)
 shape = SubResource("RectangleShape2D_7amyi")
 
 [connection signal="body_entered" from="lvlre" to="lvlre" method="_on_body_entered"]
 [connection signal="body_entered" from="poschangearea" to="player" method="_on_poschangearea_body_entered"]
+[connection signal="body_entered" from="lastlvlchange" to="player" method="_on_lastlvlchange_body_entered"]
 
 [editable path="player"]

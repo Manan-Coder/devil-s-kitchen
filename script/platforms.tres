@@ -1085,6 +1085,7 @@ texture = ExtResource("2_fry63")
 5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-22.5, -1.75, 23, -1.75, 19.75, 10, -19.75, 9.5)
 12:6/size_in_atlas = Vector2i(2, 3)
 12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.4957, -10.6066, -6.01041, -15.9099, 8, -8, 14.8492, -9.19239, 7.42462, 21.5668, -7.42462, 21.2132)
 
 [resource]
 physics_layer_0/collision_layer = 1

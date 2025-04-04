@@ -371,3 +371,32 @@ func _on_lvl_back_body_entered(body: Node2D) -> void:
 
 func _on_poschangearea_body_entered(body: Node2D) -> void:
 	position = Vector2(4339,325)
+
+
+func _on_lastlevelplat_body_entered(body: Node2D) -> void:
+	global.make_spidey = true
+
+
+func _on_last_1_st_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	position = Vector2(5,5) 
+
+
+func _on_last_2_nd_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	position = Vector2(1657,100)
+
+
+func _on_finish_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(3).timeout
+	await get_tree().change_scene_to_file("res://scenes/last_msg.tscn")
+
+
+func _on_lastfriend_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	position = Vector2(3843,257)
+
+
+func _on_lastlvlchange_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(2).timeout
+	await get_tree().change_scene_to_file("res://scenes/last_scene.tscn")
